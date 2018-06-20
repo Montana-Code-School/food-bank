@@ -39,8 +39,8 @@ if (cluster.isMaster) {
   passport.use('local-signup', localSignupStrategy);
   passport.use('local-login', localLoginStrategy);
 
-  // const authCheckMiddleware = require('./middleware/auth-check');
-  // app.use('/api', authCheckMiddleware);
+  const authCheckMiddleware = require('./middleware/auth-check');
+  app.use('/api', authCheckMiddleware);
 
   const authRoutes = require('./routes/auth');
 

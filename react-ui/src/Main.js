@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import {
   Route,
   Link,
-  Redirect,
-  withRouter
+  Redirect
 } from 'react-router-dom'
 
-import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';

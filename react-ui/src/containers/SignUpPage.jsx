@@ -34,32 +34,35 @@ class SignUpPage extends React.Component {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
+    //
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
     const formData = `name=${name}&email=${email}&password=${password}`;
-
+//COMMENTED OUT BELOW WHILE AN AUTH ROUTE IS BEING PRODUCED
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/auth/signup');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
+console.log("Osprey");
       if (xhr.status === 200) {
         // success
-
+    console.log("eagle");
         // change the component-container state
         this.setState({
           errors: {}
         });
-
+    console.log("kitty");
         // set a message
         localStorage.setItem('successMessage', xhr.response.message);
-
+    console.log("pig");
         // redirect user after sign up to login page
         this.props.history.push('/login');
-      } else {
+      }
+      else {
         // failure
 
         const errors = xhr.response.errors ? xhr.response.errors : {};
@@ -70,7 +73,7 @@ class SignUpPage extends React.Component {
         });
       }
     });
-    xhr.send(formData);
+   xhr.send(formData);
   }
 
   /**

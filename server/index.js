@@ -4,7 +4,7 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const config = require('./server/config');
+const config = require('./config');
 
 require('./model').connect(config.dbUri);
 
@@ -39,10 +39,10 @@ if (cluster.isMaster) {
   passport.use('local-signup', localSignupStrategy);
   passport.use('local-login', localLoginStrategy);
 
-  const authCheckMiddleware = require('./server/middleware/auth-check');
-  app.use('/api', authCheckMiddleware);
+  // const authCheckMiddleware = require('./middleware/auth-check');
+  // app.use('/api', authCheckMiddleware);
 
-  const authRoutes = require('./server/routes/auth');
+  const authRoutes = require('./routes/auth');
 
 
 

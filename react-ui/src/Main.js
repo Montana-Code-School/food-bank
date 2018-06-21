@@ -4,7 +4,6 @@ import {
   Link,
   Redirect
 } from 'react-router-dom'
-
 import HomePage from './components/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';
@@ -59,7 +58,13 @@ class App extends Component {
 
   componentDidMount() {
     this.toggleAuthenticateStatus()
-    fetch('/api')
+    fetch('/api/api/dashboard', {
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+        Authorization: `bearer ${Auth.getToken()}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);

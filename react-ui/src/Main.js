@@ -58,7 +58,7 @@ class App extends Component {
 
   componentDidMount() {
     this.toggleAuthenticateStatus()
-    fetch('/api/api/dashboard', {
+    fetch('/api/dashboard', {
       headers: {
         'Accept' : 'application/json',
         'Content-Type' : 'application/json',

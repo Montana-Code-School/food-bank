@@ -21,36 +21,24 @@ class DashboardPage extends React.Component {
    * This method will be executed after initial rendering.
    */
   componentDidMount() {
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('get', '/api/dashboard');
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // // set the authorization HTTP header
-    // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    // xhr.responseType = 'json';
-    // xhr.addEventListener('load', () => {
-    //   if (xhr.status === 200) {
-    //     this.setState({
-    //       secretData: xhr.response.message,
-    //       user: xhr.response.user
-    //     });
-    //   }
-    // });
-    // xhr.send();
-
-  fetch('/api/api/dashboard',{
-  method: 'GET',
-  headers: {
-    'Accept' : 'application/json',
-    'Content-Type' : 'application/json',
-    Authorization: `bearer ${Auth.getToken()}`
-  },
-  // body: JSON.stringify(obj)
-})
-.then ( ( res )  => {return res.json()})
-.then (( data ) => {console.log(data)
-  })
-}
-
+    fetch('/api/dashboard',{
+      method: 'GET',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+        Authorization: `bearer ${Auth.getToken()}`
+      }
+    })
+    .then ( ( res )  => {return res.json()})
+    .then (( data ) => {
+      if(data.status === 200){
+        this.setState({
+          secretData: data.response.message,
+          user: data.response.user
+        })
+      }
+    })
+  }
   /**
    * Render the component.
    */

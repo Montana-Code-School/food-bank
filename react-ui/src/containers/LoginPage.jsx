@@ -54,7 +54,6 @@ export default class LoginPage extends React.Component {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
-      console.log("dog");
       if (xhr.status === 200) {
         // success
 

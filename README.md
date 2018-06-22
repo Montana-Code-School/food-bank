@@ -82,31 +82,26 @@ If an app was previously deployed with [create-react-app-buildpack](https://gith
 
 In a terminal:
 
-```bash
 # Initial setup
 npm install
 
 # Start the server
-npm start
+npm run start
 ```
-
-
+```
 ### Run the React UI
 
 The React app is configured to proxy backend requests to the local Node server. (See [`"proxy"` config](react-ui/package.json))
 
 In a separate terminal from the API server, start the UI:
 
-```bash
 # Always change directory, first
 cd react-ui/
 
 # Initial setup
 npm install
 
-# Start the server @ root
 npm run start
+
+#Both of these need to be running in order for the page to upload.
 ```
-# start build script in react-ui
-npm run build
-npm run start

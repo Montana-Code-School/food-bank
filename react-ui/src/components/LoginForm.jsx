@@ -13,7 +13,7 @@ const LoginForm = ({
   user,
   toggleAuthenticateStatus
 }) => (
-  <Card className="container">
+  <Card className="container" align="center">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
 

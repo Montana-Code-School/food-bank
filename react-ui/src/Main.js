@@ -87,8 +87,8 @@ class App extends Component {
           fetching: false
         });
       }).catch(e => {
+        console.log(`API call failed: ${e}`);
         this.setState({
-          message: `API call failed: ${e}`,
           fetching: false
         });
       })

@@ -2,14 +2,14 @@ import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Auth from '../modules/Auth';
 
-class Inventory extends React.Component {
+class Suggestions extends React.Component {
   render() {
     return (
       <Card className="container" align="center">
-        <CardTitle title="React Application" subtitle="This is the Inventory Page." />
+        <CardTitle title="React Application" subtitle="This is the suggestions Page." />
       </Card>
     )
   }
 };
 
-export default Inventory;
+export default Suggestions;

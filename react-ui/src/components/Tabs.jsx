@@ -5,7 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 function TabContainer(props) {
   return (
@@ -33,31 +34,54 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   handleChange = (event, value) => {
-    this.setState({ value });
-  };
+    console.log(value);
+     this.setState({ value });
+   };
 
   render() {
     const { classes } = this.props;
     const { value } = this.state;
 
+    const LogInTab = () => { return this.props.authenticated ? (
+      <div>
+        <Tab label="Log Out" component={Link} to="/logout"/>
+      </div>
+        ) : (
+      <div>
+        <Tab label="Sign Up" component={Link} to="/signup"/>
+        <Tab label="Log In" component={Link} to="/login"/>
+      </div>
+    )}
+
+    const HomeTab = () => { return this.props.authenticated ? (
+      <div>
+        <Tab label="Home" component = {Link} to="/dashboard"/>
+      </div>
+        ) : (
+      <div>
+        <Tab label="Home" component={Link} to="/"/>
+      </div>
+    )}
+
     return (
-      <div className={classes.root}>
-        <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            scrollable
-            scrollButtons="auto"
-          >
-            <Tab label="Home" />
-            <Tab label="Inventory" />
-            <Tab label="Meal Plan" />
-            <Tab label="Suggestions" />
-            <Tab label="Help Page" />
-            <Tab label="Contact Info" />
-          </Tabs>
+      <div>
+        <AppBar color="default">
+            <Tabs
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              scrollable
+              scrollButtons="auto"
+            >
+              <HomeTab/>
+              <Tab label="Inventory" component = {Link} to="/inventory"/>
+              <Tab label="Meal Plan" component = {Link} to="/mealplan"/>
+              <Tab label="Suggestions" component = {Link} to="/suggestions"/>
+              <Tab label="Help Page" component = {Link} to="/helppage"/>
+              <Tab label="Contact Info" component = {Link} to="/contactinfo"/>
+              <LogInTab />
+            </Tabs>
         </AppBar>
       </div>
     );

@@ -11,11 +11,12 @@
     "material-ui": "^0.20.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "react-tap-event-plugin": "^3.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build --watch",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

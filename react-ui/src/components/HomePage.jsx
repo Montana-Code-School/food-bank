@@ -8,7 +8,6 @@ class HomePage extends React.Component {
     // update authenticated state on logout
     this.props.toggleAuthenticateStatus()
   }
-
   render() {
     return (
       <Card className="container" align="center">

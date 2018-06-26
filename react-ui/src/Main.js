@@ -9,8 +9,10 @@ import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import DashboardPage from './containers/DashboardPage.jsx';
+import InventoryPage from './containers/InventoryPage.jsx';
 import TestPage from './containers/TestPage.jsx';
-import AdInventory from './containers/AdminInventory.jsx';
+import AdInventory from './components/AdminInventory.jsx';
+import AdMealPlan from './components/AdMealPlan.jsx';
 import Auth from './modules/Auth';
 import Inventory from './components/Inventory.jsx';
 import MealPlan from './components/MealPlan.jsx';
@@ -129,13 +131,14 @@ class App extends Component {
 
         <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
-        <PrivateRoute path="/inventory" component={Inventory}/>
+        <PrivateRoute path="/inventory" component={InventoryPage}/>
         <PrivateRoute path="/mealplan" component={MealPlan}/>
         <PrivateRoute path="/suggestions" component={Suggestions}/>
         <PrivateRoute path="/helppage" component={HelpPage}/>
         <PrivateRoute path="/contactinfo" component={ContactInfo}/>
         <PrivateRoute path="/test" component={TestPage}/>
         <PrivateRoute path="/adinventory" component={AdInventory}/>
+        <PrivateRoute path="/admealplan" component={AdMealPlan}/>
         <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <LoggedOutRoute path="/signup" component={SignUpPage}/>
         <Route path="/logout" component={LogoutFunction}/>

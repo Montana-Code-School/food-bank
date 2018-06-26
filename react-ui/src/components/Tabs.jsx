@@ -81,7 +81,7 @@ handleChange = (event, value) => {
               <Tab label="Meal Plan" component = {Link} to="/mealplan"/>
               <Tab label="Suggestions" component = {Link} to="/suggestions"/>
               <Tab label="Help Page" component = {Link} to="/helppage"/>
-              <Tab label="Admin Inventory" component = {Link} to="/ad"/>
+              <Tab label="Admin Inventory" component = {Link} to="/adinventory"/>
               <Tab label="Contact Info" component = {Link} to="/contactinfo"/>
               <LogInTab />
           </Tabs>

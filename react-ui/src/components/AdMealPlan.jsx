@@ -1,15 +1,15 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
-class AdInventory extends React.Component {
+class AdMealPlan extends React.Component {
   render() {
     return (
       <Card className="container" align="center">
-        <CardTitle title="Admin Inventory" subtitle="This is the Admin Inventory Page." />
+        <CardTitle title="Meal Plansss" subtitle="This is the Meal Plan Page." />
         <CardText>Herro, you are an admin!</CardText>
       </Card>
     )
   }
 };
 
-export default AdInventory;
+export default AdMealPlan;

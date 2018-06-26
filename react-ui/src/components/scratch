@@ -9,3 +9,15 @@
     <Tab label="Log In" component={Link} to="/login"/>
   </div>
 )}
+
+
+
+
+
+<Tab label="Admin Inventory" component = {Link} to="/adinventory"/>
+<Tab label="Admin Meal Plan" component = {Link} to="/admealplan"/>
+
+
+
+// <PrivateRoute path="/adinventory" component={AdInventory}/>
+// <PrivateRoute path="/admealplan" component={AdMealPlan}/>

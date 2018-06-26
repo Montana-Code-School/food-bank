@@ -17,7 +17,8 @@ class SignUpPage extends React.Component {
       user: {
         email: '',
         name: '',
-        password: ''
+        password: '',
+        role: 'user'
       }
     };
 
@@ -38,7 +39,8 @@ class SignUpPage extends React.Component {
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `name=${name}&email=${email}&password=${password}`;
+    const role = encodeURIComponent(this.state.user.role);
+    const formData = `name=${name}&email=${email}&password=${password}&role=${role}`;
 //WAS COMMENTED OUT BELOW WHILE AN AUTH ROUTE IS BEING PRODUCED
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -46,7 +48,8 @@ class SignUpPage extends React.Component {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
-    console.log("Osprey");
+    console.log(this.state.user.role);
+    console.log(formData);
       if (xhr.status === 200) {
         // success
         // change the component-container state

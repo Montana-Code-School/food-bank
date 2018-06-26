@@ -15,5 +15,17 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
+router.post('/inventory',(req, res) => {
+  var item = new Item();
+  item.save(function(err) {
+    if (err)
+      res.send(err);
+    res.json({
+      message: "Item Created"
+    });
+  });
+})
+
+
 
 module.exports = router;

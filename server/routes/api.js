@@ -12,7 +12,7 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
-router.put('/dashboard', (req, res) => {
+router.post('/dashboard', (req, res) => {
   User.findById(req.user._id, function(err, user) {
     if (err)
       res.send(err);

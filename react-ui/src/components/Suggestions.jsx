@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-import Auth from '../modules/Auth';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 

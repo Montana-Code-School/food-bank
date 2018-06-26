@@ -42,10 +42,15 @@ if (cluster.isMaster) {
   const authCheckMiddleware = require('./middleware/auth-check');
   app.use('/api', authCheckMiddleware);
 
+  const adminCheckMiddleware = require('./middleware/admin-check');
+  app.use('/admin', adminCheckMiddleware);
+
   const authRoutes = require('./routes/auth');
   const apiRoutes = require('./routes/api');
+  const adminRoutes = require('./routes/admin');
   app.use('/auth', authRoutes);
   app.use('/api', apiRoutes);
+  app.use('/admin', adminRoutes);
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {

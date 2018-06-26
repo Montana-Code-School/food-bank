@@ -76,10 +76,12 @@ handleChange = (event, value) => {
             scrollButtons="auto"
           >
               <HomeTab meh={() => this.handleChange}/>
+              <Tab label="Admin Test" component ={Link} to="/test"/>
               <Tab label="Inventory" component = {Link} to="/inventory"/>
               <Tab label="Meal Plan" component = {Link} to="/mealplan"/>
               <Tab label="Suggestions" component = {Link} to="/suggestions"/>
               <Tab label="Help Page" component = {Link} to="/helppage"/>
+              <Tab label="Admin Inventory" component = {Link} to="/ad"/>
               <Tab label="Contact Info" component = {Link} to="/contactinfo"/>
               <LogInTab />
           </Tabs>

@@ -9,16 +9,16 @@ import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import DashboardPage from './containers/DashboardPage.jsx';
+import TestPage from './containers/TestPage.jsx';
+import AdInventory from './containers/AdminInventory.jsx';
 import Auth from './modules/Auth';
 import Inventory from './components/Inventory.jsx';
 import MealPlan from './components/MealPlan.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
 import ContactInfo from './components/ContactInfo.jsx';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Tabs from './components/Tabs'
+import Tabs from './components/Tabs';
+
 
 // remove tap delay, essential for MaterialUI to work properly
 
@@ -134,6 +134,8 @@ class App extends Component {
         <PrivateRoute path="/suggestions" component={Suggestions}/>
         <PrivateRoute path="/helppage" component={HelpPage}/>
         <PrivateRoute path="/contactinfo" component={ContactInfo}/>
+        <PrivateRoute path="/test" component={TestPage}/>
+        <PrivateRoute path="/adinventory" component={AdInventory}/>
         <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <LoggedOutRoute path="/signup" component={SignUpPage}/>
         <Route path="/logout" component={LogoutFunction}/>

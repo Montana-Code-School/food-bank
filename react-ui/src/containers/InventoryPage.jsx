@@ -3,13 +3,8 @@ import Auth from '../modules/Auth';
 import AdminInventory from '../components/AdminInventory.jsx';
 import Inventory from '../components/Inventory.jsx';
 
-
-
 class InventoryPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
 
@@ -17,6 +12,7 @@ class InventoryPage extends React.Component {
       secretData: '',
       user: {}
     };
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
@@ -39,20 +35,42 @@ class InventoryPage extends React.Component {
       }
     })
   }
+  onClick() {
+     fetch('/admin/inventory',{
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+          'Accept' : 'application/json',
+          Authorization: `bearer ${Auth.getToken()}`
+        }
+      })
+      .then ( ( res )  => {return res.json()})
+      .then (( data ) => {
+        console.log(data);
+        if(data.status === 200){
+          this.setState({
+            secretData: data.response.message,
+            user: data.response.user
+          })
+        }
+      })
+    }
 
 render() {
-  const AdminView = () => { return this.state.user.role === "admin" ? (
-    <div>
-       <AdminInventory/>
-    </div>
-      ) : (
-    <div>
-       <Inventory/>
-    </div>
-  )}
-  return (AdminView());
-}
+    const AdminView = () => { return this.state.user.role === "admin" ? (
+      <div>
+         <AdminInventory onClick= {this.onClick}/>
+      </div>
+        ) : (
+      <div>
+         <Inventory/>
+      </div>
+      )}
 
+  return (
+    AdminView()
+    );
+  }
 }
 
 export default InventoryPage;

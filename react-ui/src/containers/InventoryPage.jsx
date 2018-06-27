@@ -35,6 +35,7 @@ class InventoryPage extends React.Component {
       }
     })
   }
+
   onClick() {
      fetch('/admin/inventory',{
         method: 'POST',
@@ -49,12 +50,15 @@ class InventoryPage extends React.Component {
         console.log(data);
         if(data.status === 200){
           this.setState({
-            secretData: data.response.message,
             user: data.response.user
           })
         }
       })
     }
+
+    submitForm() {
+        console.log(this.add)
+      }
 
 render() {
     const AdminView = () => { return this.state.user.role === "admin" ? (

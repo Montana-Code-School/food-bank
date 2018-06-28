@@ -30,6 +30,41 @@ router.get('/inventory', (req, res) => {
   })
 });
 
+router.get('/user-collect', (req, res) => {
+  console.log("You're authorized as an admin to see this secret message.");
+  res.set('Content-Type', 'application/json');
+  User.find((err, users) => {
+    if(err)
+      res.send(err)
+    else{
+      res.set('Content-Type', 'application/json');
+      res.status(200).json({
+        message: "Successfully collected users",
+        users: users
+      });
+    }
+  })
+});
+
+router.put('/user-collect/:user_id', (req, res) => {
+  // Update the specific record according to user ID
+  User.findById(req.params.user_id, (err, user) =>{
+    if (err)
+      res.send(err);
+    for(var key in req.body) {
+        user[key] = req.body[key];
+      }
+
+    user.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({
+        message: "User Updated!"
+      });
+    });
+  });
+})
+
 router.post('/inventory',(req, res) => {
   var item = new Item();
   for (key in req.body) {
@@ -60,7 +95,7 @@ router.put('/inventory/:item_id', (req, res) => {
       if (err)
         res.send(err);
       res.json({
-        message: "User Updated!"
+        message: "Item Updated!"
       });
     });
   });
@@ -73,7 +108,7 @@ router.delete('/inventory/:item_id', (req, res) => {
      if (err)
        res.send(err);
      res.json({
-       message: "Successfully deleted!"
+       message: "Successfully deleted item!"
      });
    });
  });

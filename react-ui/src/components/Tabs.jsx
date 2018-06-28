@@ -83,6 +83,7 @@ handleChange = (event, value) => {
               <Tab label="Help Page" component = {Link} to="/helppage"/>
               <Tab label="Admin Inventory" component = {Link} to="/adinventory"/>
               <Tab label="Contact Info" component = {Link} to="/contactinfo"/>
+
               <LogInTab />
           </Tabs>
         </AppBar>

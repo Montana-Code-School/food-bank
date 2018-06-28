@@ -46,14 +46,7 @@ class InventoryPage extends React.Component {
         }
       })
       .then ( ( res )  => {return res.json()})
-      .then (( data ) => {
-        console.log(data);
-        if(data.status === 200){
-          this.setState({
-            user: data.response.user
-          })
-        }
-      })
+      .then (( data ) => console.log(data));
     }
 
     submitForm() {

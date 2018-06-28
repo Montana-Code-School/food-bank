@@ -18,6 +18,8 @@ import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
 import ContactInfo from './components/ContactInfo.jsx';
 import Tabs from './components/Tabs';
+import AdminPage from './containers/AdminPage.jsx';
+
 
 
 // remove tap delay, essential for MaterialUI to work properly
@@ -106,6 +108,7 @@ class App extends Component {
           </div>
         <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
+        <PrivateRoute path="/admin-settings" component={AdminPage}/>
         <PrivateRoute path="/inventory" component={InventoryPage}/>
         <PrivateRoute path="/mealplan" component={MealPlan}/>
         <PrivateRoute path="/suggestions" component={Suggestions}/>

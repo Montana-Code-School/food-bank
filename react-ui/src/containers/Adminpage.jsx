@@ -1,6 +1,5 @@
 import React from 'react';
 import Auth from '../modules/Auth';
-import Dashboard from '../components/Dashboard.jsx';
 import Roles from '../components/Roles.jsx'
 
 class TestPage extends React.Component {
@@ -34,7 +33,7 @@ class TestPage extends React.Component {
   }
 
   render() {
-    <Roles />
+    return(<Roles />)
   }
 }
 

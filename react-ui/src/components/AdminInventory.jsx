@@ -90,7 +90,7 @@ render() {
         <td style = {styles.tableRowStyle}>{item.name}</td>
         <td style = {styles.tableRowStyle}>{item.category}</td>
         <td style = {styles.tableRowStyle}>{item.quantity}</td>
-        <td style = {styles.tableRowStyle}><href src={item.recipeUrl} alt = {`${item.name} recipe`}/></td>
+        <td style = {styles.tableRowStyle}><a href={item.recipeUrl} alt = {`${item.name} recipe`}>{item.name} Recipe</a></td>
         <td style = {styles.tableRowStyle}><RaisedButton onClick={this.editItem} type="edit" label="Edit" data-id={item._id} secondary /></td>
         <td style = {styles.tableRowStyle}><RaisedButton onClick={this.deleteItem} type="delete" label="Delete" data-id={item._id} primary /></td>
       </tr>
@@ -98,8 +98,7 @@ render() {
     return (
 
       <Card style = {styles.cardStyle} className="container" align="center">
-        <CardTitle title="Inventory" subtitle="Maintain your Ine" />
-        <CardText>Herro, you are an admin!</CardText>
+        <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
         <div style = {styles.inputDiv}>
             <div>
               <TextField
@@ -146,8 +145,10 @@ render() {
                 <th style = {styles.tableRowStyle}><strong>Name</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Category</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
+                <th style = {styles.tableRowStyle}><strong>Recipe</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Edit</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Delete</strong></th>
+
               </tr>
               {itemComponents}
           </tbody>
@@ -187,5 +188,8 @@ const styles= {
   },
   inputStyle:{
     margin: 10
+  },
+  titleStyle: {
+    marginBottom:-30
   }
 }

@@ -3,6 +3,7 @@ import { Card, CardTitle, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth';
+import Selector from './Selector.jsx'
 
 class AdInventory extends React.Component {
   constructor(props) {
@@ -83,6 +84,7 @@ componentDidMount() {
 }
 
 render() {
+  console.log(this.addCategory);
   let itemComponents = this.state.items.map((item,index) =>
       <tr style = {styles.tableRowStyle}>
         <td style = {styles.tableRowStyle}>{item.name}</td>
@@ -109,14 +111,8 @@ render() {
                 ref = {this.addName}
                 style = {styles.inputStyle}
               />
-              <TextField
-                floatingLabelText="Category i.e. veggies, fruits, meats"
-                name="Category"
-                multiLine={false}
-                rows={1}
-                rowsMax={1}
-                ref = {this.addCategory}
-                style = {styles.inputStyle}
+              <Selector
+                addCategory= {this.addCategory}
               />
             </div>
             <div>

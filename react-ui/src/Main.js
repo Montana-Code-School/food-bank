@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Route,
-  Link,
   Redirect
 } from 'react-router-dom'
 import HomePage from './components/HomePage.jsx';
@@ -14,7 +13,6 @@ import TestPage from './containers/TestPage.jsx';
 import AdInventory from './components/AdminInventory.jsx';
 import AdMealPlan from './components/AdMealPlan.jsx';
 import Auth from './modules/Auth';
-import Inventory from './components/Inventory.jsx';
 import MealPlan from './components/MealPlan.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
@@ -106,29 +104,6 @@ class App extends Component {
           <div>
             <Tabs authenticated= {this.state.authenticated}/>
           </div>
-          <div className="top-bar">
-            <div className="top-bar-left">
-              <Link to="/">Welcome to React</Link>
-            </div>
-            {this.state.authenticated ? (
-              <div className="top-bar-right">
-                <Link to="/dashboard">Dashboard</Link>
-                <Link to="/logout">Log out</Link>
-              </div>
-                ) : (
-              <div className="top-bar-right">
-                <Link to="/login">Log in</Link>
-                <Link to="/signup">Sign up</Link>
-              </div>
-            )}
-            <br/>
-          <p>
-          {this.state.fetching
-            ? 'Fetching message from API'
-            : this.state.message}
-          </p>
-        </div>
-
         <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/inventory" component={InventoryPage}/>

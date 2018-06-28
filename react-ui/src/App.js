@@ -9,9 +9,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 injectTapEventPlugin();
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 
 function TabContainer(props) {
@@ -27,6 +26,10 @@ const styles = theme => ({
     width: '100%',
     backgroundColor: theme.palette.background.paper,
   },
+  tabs: {
+    width: '12.5%',
+
+  }
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
@@ -42,48 +45,24 @@ handleChange = (event, value) => {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-
-    const LogInTab = () => { return this.props.authenticated ? (
-      <div>
-        <Tab value={value} label="Log Out" component={Link} to="/logout"/>
-      </div>
-        ) : (
-      <div>
-        <Tab value={value} label="Sign Up" component={Link} to="/signup"/>
-        <Tab value={value}label="Log In" component={Link} to="/login"/>
-      </div>
-    )}
-
-    const HomeTab = (meh) => { return this.props.authenticated ? (
-      <div>
-        <Tab onChange={meh} label="Home" component = {Link} to="/dashboard"/>
-      </div>
-        ) : (
-      <div>
-        <Tab onChange={meh} label="Home" component={Link} to="/"/>
-      </div>
-    )}
-
     return (
-      <div>
-        <AppBar color="default">
+      <div className = {classes.root} style = {styles.root}>
+        <AppBar position = "static" color="default">
           <Tabs
             value={value}
             onChange={this.handleChange}
             indicatorColor="primary"
-            textColor="primary"
             scrollable
             scrollButtons="auto"
           >
-              <HomeTab meh={() => this.handleChange}/>
-              <Tab label="Admin Test" component ={Link} to="/test"/>
-              <Tab label="Inventory" component = {Link} to="/inventory"/>
-              <Tab label="Meal Plan" component = {Link} to="/mealplan"/>
-              <Tab label="Suggestions" component = {Link} to="/suggestions"/>
-              <Tab label="Help Page" component = {Link} to="/helppage"/>
-              <Tab label="Admin Inventory" component = {Link} to="/adinventory"/>
-              <Tab label="Contact Info" component = {Link} to="/contactinfo"/>
-              <LogInTab />
+              <Tab style = {styles.tabs} label="Home" component = {Link} to= {this.props.authenticated ? "/dashboard" : "/"}/>
+              <Tab style = {styles.tabs} label="Inventory" component = {Link} to="/inventory"/>
+              <Tab style = {styles.tabs} label="Meal Plan" component = {Link} to="/mealplan"/>
+              <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
+              <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
+              <Tab style = {styles.tabs} label="Contact Info" component = {Link} to="/contactinfo"/>
+              {this.props.authenticated ? "" : <Tab style = {styles.tabs} label= 'Sign Up' component={Link} to="/signup"/> }
+              <Tab label={this.props.authenticated ? "Log Out" : "Log In"} component={Link} to={this.props.authenticated ? "/logout" : "/login"}/>
           </Tabs>
         </AppBar>
       </div>

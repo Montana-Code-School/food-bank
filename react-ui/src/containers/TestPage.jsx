@@ -1,7 +1,5 @@
 import React from 'react';
 import Auth from '../modules/Auth';
-import Dashboard from '../components/Dashboard.jsx';
-
 
 class TestPage extends React.Component {
 

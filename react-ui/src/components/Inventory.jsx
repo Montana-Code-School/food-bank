@@ -34,7 +34,7 @@ class Inventory extends React.Component {
           <td style = {styles.tableRowStyle}>{item.name}</td>
           <td style = {styles.tableRowStyle}>{item.category}</td>
           <td style = {styles.tableRowStyle}>{item.quantity}</td>
-          <td style = {styles.tableRowStyle}>{item.recipeUrl}</td>
+          <td style = {styles.tableRowStyle}><a href={item.recipeUrl} alt = {`${item.name} recipe`}>{item.name} Recipe</a></td>
         </tr>
       )
 

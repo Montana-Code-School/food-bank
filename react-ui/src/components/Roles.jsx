@@ -1,8 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Card, CardText } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -30,7 +28,6 @@ componentDidMount() {
    })
   .then(res => res.json())
   .then((data) => {
-    console.log(data);
     this.setState({users:data.users})
   })
 }
@@ -39,7 +36,6 @@ onChange() {
   this.setState({
     email: this.userEmail.current.input.value
   })
-  console.log(this.state.email);
 }
 
 onClick() {
@@ -82,10 +78,10 @@ render() {
             onChange = {this.onChange}
           />
         </div>
-    <div className="button-line">
+        <div className="button-line">
       <RaisedButton type="userEmail" label="user email" primary onClick={this.onClick} />
     </div>
   </Card>
   )
-}
+ }
 }

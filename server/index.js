@@ -5,8 +5,9 @@ const numCPUs = require('os').cpus().length;
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
+const db = process.env.MONGODB_URI || config.dbUri;
 
-require('./model').connect(config.dbUri);
+require('./model').connect(db);
 
 const PORT = process.env.PORT || 5000;
 

@@ -38,33 +38,7 @@ handleChange = (event, value) => {
    this.setState({ value });
  };
 
- componentWillMount() {
 
-   fetch('/api/dashboard',{
-     method: 'GET',
-     headers: {
-       'Accept' : 'application/json',
-       'Content-Type' : 'application/json',
-       Authorization: `bearer ${Auth.getToken()}`
-     }
-   })
-   .then ( ( res )  => {return res.json()})
-   .then (( data ) => {
-     if(data){
-       this.setState({
-         user: data.user,
-         role: data.user.role
-       })
-       if (this.state.role === 'admin') {
-        this.setState({adminStatus: true})
-       }
-   }
- })
-}
-
-componentDidMount() {
-
-}
 
   render() {
     console.log(typeof this.state.role);

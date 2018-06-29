@@ -24,8 +24,7 @@ const styles = theme => ({
 
 class Selector extends React.Component {
   state = {
-    foodCategory: '',
-    name: '',
+
   };
 
   handleChange = event => {

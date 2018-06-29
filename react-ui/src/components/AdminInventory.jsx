@@ -9,7 +9,10 @@ class AdInventory extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: []
+      items: [],
+      foodCategory: '',
+      foodCategories: ['Meat', 'Fruit', 'Vegetable', 'Canned'],
+      name: ''
     }
 
     this.addName = React.createRef();
@@ -18,13 +21,18 @@ class AdInventory extends React.Component {
     this.addRecipeUrl = React.createRef();
     this.createItem = this.createItem.bind(this);
     this.editItem = this.editItem.bind(this);
-
+    this.handleChange = this.handleChange.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
+  handleChange(event) {
+    console.log(event.target.name);
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   createItem() {
     const value = {
       name: this.addName.current.input.value,
-      category: this.addCategory.current.input.value,
+      category: this.state.foodCategory,
       quantity:this.addQuantity.current.input.value,
       recipeUrl: this.addRecipeUrl.current.input.value
     }
@@ -38,15 +46,16 @@ class AdInventory extends React.Component {
        },
        body:JSON.stringify(value)
      })
-     .then ( ( res )  => {return res.json()})
-     .then (( data ) => {console.log(data)})
+     .then ( res   => res.json())
+     .then ( data  => this.setState({items:data.items}))
   }
 
   editItem(evt) {
-    let searchUrl='/admin/inventory/' + evt.target.dataset.id
+    let searchUrl='/admin/inventory/' + evt.currentTarget.dataset.id
+    console.log(searchUrl);
     const value = {
       name: this.addName.current.input.value,
-      category: this.addCategory.current.input.value,
+      category: this.state.foodCategory,
       quantity: this.addQuantity.current.input.value,
       recipeUrl: this.addRecipeUrl.current.input.value
     }
@@ -60,14 +69,14 @@ class AdInventory extends React.Component {
        body:JSON.stringify(value)
      })
      .then ( res   => res.json())
-     .then ( data  => console.log(data))
+     .then ( data  => this.setState({items:data.items}))
    }
 
   deleteItem(evt) {
-    let deleteUrl='/admin/inventory/' + evt.target.dataset.id
+    let deleteUrl='/admin/inventory/' + evt.currentTarget.dataset.id
       fetch( deleteUrl, { method: 'DELETE' })
-        .then( ( res ) => {return res.json()})
-        .then( data => console.log(data));
+        .then( res  => res.json() )
+        .then( data => this.setState({items:data.items}));
    }
 
 componentDidMount() {
@@ -84,22 +93,40 @@ componentDidMount() {
 }
 
 render() {
-  console.log(this.addCategory);
   let itemComponents = this.state.items.map((item,index) =>
-      <tr style = {styles.tableRowStyle}>
+      <tr key={`row${index}`} style = {styles.tableRowStyle}>
         <td style = {styles.tableRowStyle}>{item.name}</td>
         <td style = {styles.tableRowStyle}>{item.category}</td>
         <td style = {styles.tableRowStyle}>{item.quantity}</td>
-        <td style = {styles.tableRowStyle}><a href={item.recipeUrl} alt = {`${item.name} recipe`}>{item.name} Recipe</a></td>
-        <td style = {styles.tableRowStyle}><RaisedButton onClick={this.editItem} type="edit" label="Edit" data-id={item._id} secondary /></td>
-        <td style = {styles.tableRowStyle}><RaisedButton onClick={this.deleteItem} type="delete" label="Delete" data-id={item._id} primary /></td>
+        <td style = {styles.tableRowStyle}>
+          <a href={item.recipeUrl}
+            alt = {`${item.name} recipe`}
+          >{item.name} Recipe
+          </a>
+        </td>
+        <td style = {styles.tableRowStyle}>
+          <RaisedButton
+            onClick={this.editItem}
+            type="edit"
+            label="Edit"
+            data-id={item._id}
+            secondary />
+          </td>
+        <td style = {styles.tableRowStyle}>
+          <RaisedButton
+            onClick={this.deleteItem}
+            type="delete"
+            label="Delete"
+            data-id={item._id}
+            primary />
+          </td>
       </tr>
     )
     return (
 
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
-        <div style = {styles.inputDiv}>
+        <form style = {styles.inputDiv}>
             <div>
               <TextField
                 floatingLabelText="Item Name"
@@ -111,7 +138,10 @@ render() {
                 style = {styles.inputStyle}
               />
               <Selector
-                addCategory= {this.addCategory}
+                name={this.state.name}
+                foodCategory={this.state.foodCategory}
+                foodCategories={this.state.foodCategories}
+                handleChange={this.handleChange}
               />
             </div>
             <div>
@@ -134,7 +164,7 @@ render() {
                 style = {styles.inputStyle}
               />
             </div>
-          </div>
+          </form>
         <div>
           <RaisedButton onClick={this.createItem} type="submit" label="Submit" primary />
         </div>

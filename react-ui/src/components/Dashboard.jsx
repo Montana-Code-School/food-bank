@@ -6,10 +6,10 @@ const Dashboard = ({ secretData, user }) => (
   <Card className="container" align="center">
     <CardTitle
       title="Dashboard"
-      subtitle="You should get access to this page only after authentication."
+      // subtitle="You should get access to this page only after authentication."
     />
     <CardText style={{ fontSize: '16px', color: 'green' }}>
-      Welcome <strong>{user.name}</strong>!
+          Welcome <strong>{user.name}</strong>!
       <br />
     </CardText>
   </Card>

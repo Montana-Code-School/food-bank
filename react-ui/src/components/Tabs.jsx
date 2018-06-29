@@ -44,11 +44,9 @@ handleChange = (event, value) => {
    })
    .then ( ( res )  => {return res.json()})
    .then (( data ) => {
-     console.log(data);
      if(data){
        this.setState({
          user: data.user,
-         adminStatus:
        })
      }
    })
@@ -73,7 +71,7 @@ handleChange = (event, value) => {
               <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
               <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
               <Tab style = {styles.tabs} label="Contact Info" component = {Link} to="/contactinfo"/> }
-              {adminStatus ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/> : "" }
+              {this.state.adminStatus ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/> : "" }
               {this.props.authenticated ? "" : <Tab style = {styles.tabs} label= 'Sign Up' component={Link} to="/signup"/> }
               <Tab label={this.props.authenticated ? "Log Out" : "Log In"} component={Link} to={this.props.authenticated ? "/logout" : "/login"}/>
           </Tabs>
@@ -87,4 +85,4 @@ ScrollableTabsButtonAuto.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles)(ScrollableTabsButtonAuto);//was named
+export default withStyles (styles)(ScrollableTabsButtonAuto);

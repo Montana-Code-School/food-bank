@@ -23,7 +23,7 @@ const styles = theme => ({
 });
 
 class Selector extends React.Component {
-
+  
   render() {
     let MenuItems = this.props.foodCategories.map((cat, index) =>
       <MenuItem key={`cat${index}`} value={cat}>{cat}</MenuItem>

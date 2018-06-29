@@ -16,23 +16,29 @@ const styles = theme => ({
   },
   tabs: {
     width: '12.5%',
-
   }
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
+constructor(props) {
+  super(props)
 
-state = {
-  value: 0,
-  user:{},
-  adminStatus:false
-};
+  this.state = {
+    value: 0,
+    user:{},
+    adminStatus: false,
+    role: ''
+
+  };
+  this.handleChange = this.handleChange.bind(this)
+
+}
 
 handleChange = (event, value) => {
    this.setState({ value });
  };
 
- componentDidMount() {
+ componentWillMount() {
 
    fetch('/api/dashboard',{
      method: 'GET',
@@ -47,12 +53,22 @@ handleChange = (event, value) => {
      if(data){
        this.setState({
          user: data.user,
+         role: data.user.role
        })
-     }
-   })
+       if (this.state.role === 'admin') {
+        this.setState({adminStatus: true})
+       }
+   }
+ })
+}
+
+componentDidMount() {
+
 }
 
   render() {
+    console.log(typeof this.state.role);
+    console.log(this.state.adminStatus);
     const { classes } = this.props;
     const { value } = this.state;
     return (
@@ -64,6 +80,7 @@ handleChange = (event, value) => {
             indicatorColor="primary"
             scrollable
             scrollButtons="off"
+
           >
               <Tab style = {styles.tabs} label="Home" component = {Link} to= {this.props.authenticated ? "/dashboard" : "/"}/>
               <Tab style = {styles.tabs} label="Inventory" component = {Link} to="/inventory"/>

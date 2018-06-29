@@ -25,7 +25,7 @@ class Inventory extends React.Component {
     .then(data =>{
       this.setState({items:data.items})
     })
-}
+  }
 
   render() {
     let itemComponents = this.state.items.map((item,index) =>
@@ -38,22 +38,22 @@ class Inventory extends React.Component {
       )
 
     return (
-      <Card style = {styles.cardStyle} className="container" align="center">
-        <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock and recipe suggestions!" />
-        <div style = {styles.tableDivStyle}>
-          <table style = {styles.tableRowStyle}>
-            <tbody>
-              <tr style = {styles.tableRowStyle}>
-                <th style = {styles.tableRowStyle}><strong>Name</strong></th>
-                <th style = {styles.tableRowStyle}><strong>Category</strong></th>
-                <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
-                <th style = {styles.tableRowStyle}><strong>Recipes</strong></th>
-              </tr>
-            {itemComponents}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+        <Card style = {styles.cardStyle} className="container" align="center">
+          <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock and recipe suggestions!" />
+          <div style = {styles.tableDivStyle}>
+            <table style = {styles.tableRowStyle}>
+              <tbody>
+                <tr style = {styles.tableRowStyle}>
+                  <th style = {styles.tableRowStyle}><strong>Name</strong></th>
+                  <th style = {styles.tableRowStyle}><strong>Category</strong></th>
+                  <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
+                  <th style = {styles.tableRowStyle}><strong>Recipes</strong></th>
+                </tr>
+              {itemComponents}
+              </tbody>
+            </table>
+          </div>
+        </Card>
     )
   }
 };

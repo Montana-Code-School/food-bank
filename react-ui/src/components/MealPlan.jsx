@@ -5,7 +5,7 @@ class MealPlan extends React.Component {
   render() {
     return (
       <Card className="container" align="center">
-        <CardTitle title="React Application" subtitle="This is the Mael Plan Page." />
+        <CardTitle title="React Application" subtitle="This is the Meal Plan Page." />
       </Card>
     )
   }

@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 
-
 module.exports.connect = (uri) => {
-  mongoose.connect(uri);
-  // plug in the promise library:
-  mongoose.Promise = global.Promise;
-
-
-  mongoose.connection.on('error', (err) => {
-    console.error(`Mongoose connection error: ${err}`);
-    process.exit(1);
+  mongoose.connect(uri).then(() => {
+  console.log("Connected to Database");
+  }).catch((err) => {
+      console.log("Not Connected to Database ERROR! ", err);
   });
+
 
   // load models
   require('./user');

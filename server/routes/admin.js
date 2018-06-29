@@ -73,18 +73,24 @@ router.post('/inventory',(req, res) => {
   item.save(function(err) {
     if (err)
       res.send(err);
-    res.json({
-      message: "Item Created"
-    });
+      Item.find((err, items) => {
+        if(err)
+          res.send(err)
+        else{
+          res.set('Content-Type', 'application/json');
+          res.json({
+            message: "Item Created",
+            items: items
+          });
+        }
+      })
   });
 })
 
 router.put('/inventory/:item_id', (req, res) => {
   // Update the specific record according to user ID
+
   Item.findById(req.params.item_id, (err, item) =>{
-    console.log(item);
-    console.log(err);
-    console.log(req.body);
     if (err)
       res.send(err);
     for(var key in req.body) {
@@ -94,9 +100,17 @@ router.put('/inventory/:item_id', (req, res) => {
     item.save(function(err) {
       if (err)
         res.send(err);
-      res.json({
-        message: "Item Updated!"
-      });
+    Item.find((err, items) => {
+      if(err)
+        res.send(err)
+      else{
+        res.set('Content-Type', 'application/json');
+        res.status(200).json({
+          message: "Items or something2",
+          items: items
+        });
+      }
+    })
     });
   });
 })
@@ -107,9 +121,16 @@ router.delete('/inventory/:item_id', (req, res) => {
    }, function(err, item) {
      if (err)
        res.send(err);
-     res.json({
-       message: "Successfully deleted item!"
-     });
+       Item.find((err, items) => {
+         if(err)
+           res.send(err)
+         else{
+           res.json({
+             message: "Deleted item",
+             items: items
+           });
+         }
+       })
    });
  });
 

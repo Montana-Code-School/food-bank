@@ -50,7 +50,6 @@ handleChange = (event, value) => {
    })
    .then ( ( res )  => {return res.json()})
    .then (( data ) => {
-     console.log(data);
      if(data){
        this.setState({
          user: data.user,
@@ -103,4 +102,4 @@ ScrollableTabsButtonAuto.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles)(ScrollableTabsButtonAuto);//was named
+export default withStyles (styles)(ScrollableTabsButtonAuto);

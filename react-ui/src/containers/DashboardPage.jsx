@@ -21,6 +21,7 @@ class DashboardPage extends React.Component {
    * This method will be executed after initial rendering.
    */
   componentDidMount() {
+
     fetch('/api/dashboard',{
       method: 'GET',
       headers: {
@@ -31,18 +32,18 @@ class DashboardPage extends React.Component {
     })
     .then ( ( res )  => {return res.json()})
     .then (( data ) => {
-      if(data.status === 200){
+      if(data){
         this.setState({
-          secretData: data.response.message,
-          user: data.response.user
+          user: data.user,
         })
       }
     })
-  }
+ }
   /**
    * Render the component.
    */
   render() {
+    console.log(this.state.user);
     return (<Dashboard secretData={this.state.secretData} user={this.state.user} />);
   }
 

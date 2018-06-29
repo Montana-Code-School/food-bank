@@ -26,7 +26,6 @@ class InventoryPage extends React.Component {
     })
     .then ( ( res )  => {return res.json()})
     .then (( data ) => {
-      console.log(data);
       if(data){
         this.setState({
           secretData: data.message,

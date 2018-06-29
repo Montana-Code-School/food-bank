@@ -23,40 +23,28 @@ const styles = theme => ({
 });
 
 class Selector extends React.Component {
-  state = {
-
-  };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
+  
   render() {
-    const { classes } = this.props;
-
+    let MenuItems = this.props.foodCategories.map((cat, index) =>
+      <MenuItem key={`cat${index}`} value={cat}>{cat}</MenuItem>
+    )
     return (
-      <form className={classes.root} autoComplete="off">
-        <FormControl className={classes.formControl}>
+        <FormControl>
           <InputLabel htmlFor="foodCategory-simple">Category</InputLabel>
           <Select
-            value={this.state.foodCategory}
-            onChange={this.handleChange}
+            value={this.props.foodCategory}
+            onChange={ (event) => this.props.handleChange(event) }
             inputProps={{
               name: 'foodCategory',
-              id: 'foodCategory-simple',
+              id: 'foodCategory-simple'
             }}
-            ref={this.props.addCategory}
           >
           <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={'Meat'}>Meat</MenuItem>
-            <MenuItem value={'Fruit'}>Fruit</MenuItem>
-            <MenuItem value={'Vegetable'}>Vegetable</MenuItem>
-            <MenuItem value={'Canned'}>Canned</MenuItem>
+            {MenuItems}
           </Select>
         </FormControl>
-      </form>
     );
   }
 }

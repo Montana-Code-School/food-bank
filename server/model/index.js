@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
+
 module.exports.connect = (uri) => {
-let mon = mongoose.createConnection(uri, {useMongoClient: true})
+  mongoose.connect(uri);
   // plug in the promise library:
   mongoose.Promise = global.Promise;
 
 
-mon.once('open', () => {
-    console.log("connected");
+  mongoose.connection.on('error', (err) => {
+    console.error(`Mongoose connection error: ${err}`);
+    process.exit(1);
   });
 
   // load models

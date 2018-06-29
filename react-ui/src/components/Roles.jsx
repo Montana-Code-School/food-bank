@@ -42,8 +42,8 @@ onClick() {
   let foundEmail = this.state.users.filter((element) => {
     if (element.email === this.state.email) {
       return element
-    }
-  })
+      }
+    })
 
   if (foundEmail.length === 1) {
     let searchUrl='/admin/user-collect/' + foundEmail[0]._id
@@ -63,8 +63,8 @@ onClick() {
      })
      .then ( res   => res.json())
      .then ( data  => console.log(data))
-  }
-}
+   }
+ }
 
 render() {
   return (
@@ -78,9 +78,7 @@ render() {
             onChange = {this.onChange}
           />
         </div>
-        <div className="button-line">
       <RaisedButton type="userEmail" label="user email" primary onClick={this.onClick} />
-    </div>
   </Card>
   )
  }

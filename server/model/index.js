@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 
+let uri = "mongodb://heroku_3fj2xqnm:ijlbgmcjvp1hjnbi62f8ji5hcj@ds223161.mlab.com:23161/heroku_3fj2xqnm";
 
 module.exports.connect = (uri) => {
-  mongoose.connect(uri);
-  // plug in the promise library:
-  mongoose.Promise = global.Promise;
+  
+mongoose.connect(uri);
 
+let db = mongoose.connection;
 
-  mongoose.connection.on('error', (err) => {
-    console.error(`Mongoose connection error: ${err}`);
-    process.exit(1);
-  });
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', () => {
+    console.log("connected");
+});
 
   // load models
   require('./user');
   require('./items');
   require('./inventory');
-
-};
+}

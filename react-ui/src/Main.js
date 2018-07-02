@@ -9,14 +9,12 @@ import LogoutFunction from './containers/LogoutFunction.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import DashboardPage from './containers/DashboardPage.jsx';
 import InventoryPage from './containers/InventoryPage.jsx';
-import TestPage from './containers/TestPage.jsx';
 import AdInventory from './components/AdminInventory.jsx';
 import AdMealPlan from './components/AdMealPlan.jsx';
 import Auth from './modules/Auth';
 import MealPlanPage from './containers/MealPlanPage.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
-import ContactInfo from './components/ContactInfo.jsx';
 import Tabs from './components/Tabs';
 import AdminPage from './containers/AdminPage.jsx';
 
@@ -63,7 +61,8 @@ class App extends Component {
     this.state = {
       message: null,
       fetching: true,
-      authenticated: false
+      authenticated: false,
+      adminStatus: false
     };
   }
 
@@ -88,6 +87,11 @@ class App extends Component {
           message: json.message,
           fetching: false
         });
+        if (json.user.role === 'admin') {
+          this.setState({
+            adminStatus: true
+          })
+        }
       }).catch(e => {
         console.log(`API call failed: ${e}`);
         this.setState({
@@ -104,7 +108,7 @@ class App extends Component {
     return (
         <div>
           <div>
-            <Tabs authenticated= {this.state.authenticated}/>
+            <Tabs adminStatus = {this.state.adminStatus} authenticated= {this.state.authenticated}/>
           </div>
         <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
@@ -113,8 +117,6 @@ class App extends Component {
         <PrivateRoute path="/mealplan" component={MealPlanPage}/>
         <PrivateRoute path="/suggestions" component={Suggestions}/>
         <PrivateRoute path="/helppage" component={HelpPage}/>
-        <PrivateRoute path="/contactinfo" component={ContactInfo}/>
-        <PrivateRoute path="/test" component={TestPage}/>
         <PrivateRoute path="/adinventory" component={AdInventory}/>
         <PrivateRoute path="/admealplan" component={AdMealPlan}/>
         <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />

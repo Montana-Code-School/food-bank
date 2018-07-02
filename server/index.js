@@ -30,8 +30,8 @@ console.log(PORT);
   const authCheckMiddleware = require('./middleware/auth-check');
   app.use('/api', authCheckMiddleware);
 
-  // const adminCheckMiddleware = require('./middleware/admin-check');
-  // app.use('/admin', adminCheckMiddleware);
+  const adminCheckMiddleware = require('./middleware/admin-check');
+  app.use('/admin', adminCheckMiddleware);
 
   const authRoutes = require('./routes/auth');
   const apiRoutes = require('./routes/api');

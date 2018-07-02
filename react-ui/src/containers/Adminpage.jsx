@@ -2,7 +2,7 @@ import React from 'react';
 import Auth from '../modules/Auth';
 import Roles from '../components/Roles.jsx'
 
-class TestPage extends React.Component {
+class AdminPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,7 +23,6 @@ class TestPage extends React.Component {
     })
     .then ( ( res )  => {return res.json()})
     .then (( data ) => {
-      console.log(data);
       if(data){
         this.setState({
           user: data.user
@@ -37,4 +36,4 @@ class TestPage extends React.Component {
   }
 }
 
-export default TestPage;
+export default AdminPage;

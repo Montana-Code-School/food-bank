@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
@@ -23,7 +21,7 @@ const styles = theme => ({
 });
 
 class Selector extends React.Component {
-  
+
   render() {
     let MenuItems = this.props.foodCategories.map((cat, index) =>
       <MenuItem key={`cat${index}`} value={cat}>{cat}</MenuItem>

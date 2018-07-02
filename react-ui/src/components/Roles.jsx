@@ -3,6 +3,9 @@ import Auth from '../modules/Auth';
 import { Card } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import AdminStatusAlert from './AdminStatusAlert.jsx';
+import DeleteStatusAlert from './DeleteStatusAlert.jsx';
+
 
 export default class Roles extends React.Component {
   constructor(props) {
@@ -15,6 +18,7 @@ export default class Roles extends React.Component {
     this.userEmail = React.createRef();
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.deleteOnClick = this.deleteOnClick.bind(this);
 }
 
 componentDidMount() {
@@ -38,34 +42,6 @@ onChange() {
   })
 }
 
-onClick() {
-  let foundEmail = this.state.users.filter((element) => {
-    if (element.email === this.state.email) {
-      return element
-      }
-    })
-
-  if (foundEmail.length === 1) {
-    let searchUrl='/admin/user-collect/' + foundEmail[0]._id
-
-    const value = {
-      role: "admin"
-    }
-
-    fetch(searchUrl, {
-       method: 'PUT',
-       headers: {
-         'Content-Type' : 'application/json',
-         'Accept' : 'application/json',
-         Authorization: `bearer ${Auth.getToken()}`
-       },
-       body:JSON.stringify(value)
-     })
-     .then ( res   => res.json())
-     .then ( data  => console.log(data))
-   }
- }
-
 render() {
   return (
     <Card className="container" align="center">
@@ -78,8 +54,26 @@ render() {
             onChange = {this.onChange}
           />
         </div>
-      <RaisedButton type="userEmail" label="user email" primary onClick={this.onClick} />
+        <div style={styles.buttonDiv}>
+          <AdminStatusAlert
+            onClick = {this.onClick}
+            email = {this.state.email}
+            users = {this.state.users}
+          />
+          <DeleteStatusAlert
+            deleteOnClick = {this.deleteOnClick}
+            email = {this.state.email}
+            users = {this.state.users}
+          />
+      </div>
   </Card>
   )
  }
+}
+
+const styles = {
+  buttonDiv: {
+    flex:1,
+    flexDirection: 'row'
+  }
 }

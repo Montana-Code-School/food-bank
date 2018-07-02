@@ -5,7 +5,10 @@ const User = require('mongoose').model('User');
 const Item = require('mongoose').model('Item');
 const bodyParser = require('body-parser');
 
+
+//GET
 router.get('/dashboard', (req, res) => {
+  // Get users info when logging in
   console.log("You're authorized as an admin to see this secret message.");
   res.set('Content-Type', 'application/json');
   res.status(200).json({
@@ -16,7 +19,7 @@ router.get('/dashboard', (req, res) => {
 });
 
 router.get('/inventory', (req, res) => {
-  console.log("Meh");
+  //Gets inventory on inventory for both user and admin
   Item.find((err, items) => {
     if(err)
       res.send(err)
@@ -31,6 +34,7 @@ router.get('/inventory', (req, res) => {
 });
 
 router.get('/user-collect', (req, res) => {
+//Gets users information
   console.log("You're authorized as an admin to see this secret message.");
   res.set('Content-Type', 'application/json');
   User.find((err, users) => {
@@ -46,26 +50,9 @@ router.get('/user-collect', (req, res) => {
   })
 });
 
-router.put('/user-collect/:user_id', (req, res) => {
-  // Update the specific record according to user ID
-  User.findById(req.params.user_id, (err, user) =>{
-    if (err)
-      res.send(err);
-    for(var key in req.body) {
-        user[key] = req.body[key];
-      }
-
-    user.save(function(err) {
-      if (err)
-        res.send(err);
-      res.json({
-        message: "User Updated!"
-      });
-    });
-  });
-})
-
+// POST
 router.post('/inventory',(req, res) => {
+  // Creating a new item in inventory
   var item = new Item();
   for (key in req.body) {
      item[key] = req.body[key];
@@ -87,8 +74,28 @@ router.post('/inventory',(req, res) => {
   });
 })
 
+// PUT
+router.put('/user-collect/:user_id', (req, res) => {
+  // Updates the user from admin route, gives users admin status
+  User.findById(req.params.user_id, (err, user) =>{
+    if (err)
+      res.send(err);
+    for(var key in req.body) {
+        user[key] = req.body[key];
+      }
+
+    user.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({
+        message: "Admin Status Changed"
+      });
+    });
+  });
+})
+
 router.put('/inventory/:item_id', (req, res) => {
-  // Update the specific record according to user ID
+  // Updates the inventory thru admin route
 
   Item.findById(req.params.item_id, (err, item) =>{
     if (err)
@@ -115,6 +122,8 @@ router.put('/inventory/:item_id', (req, res) => {
   });
 })
 
+// DELETE
+// This deletes items
 router.delete('/inventory/:item_id', (req, res) => {
    Item.remove({
      _id: req.params.item_id

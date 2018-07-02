@@ -13,6 +13,7 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+    marginBottom: 10
   },
   tabs: {
     width: '12.5%',
@@ -38,11 +39,7 @@ handleChange = (event, value) => {
    this.setState({ value });
  };
 
-
-
   render() {
-    console.log(typeof this.state.role);
-    console.log(this.state.adminStatus);
     const { classes } = this.props;
     const { value } = this.state;
     return (

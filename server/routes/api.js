@@ -3,6 +3,8 @@ const router = new express.Router();
 const mongoose = require('mongoose');
 const User = require('mongoose').model('User');
 const axios = require('axios');
+const Item = require('mongoose').model('Item');
+
 
 router.get('/dashboard', (req, res) => {
   console.log("You're authorized to see this secret message.");
@@ -13,19 +15,19 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
-router.post('/dashboard', (req, res) => {
-  User.findById(req.user._id, function(err, user) {
-    if (err)
-      res.send(err);
-
-    user.save(function(err) {
-      if (err)
-        res.send(err);
-      res.json({
-        message: "User Updated!"
+router.get('/inventory', (req, res) => {
+  //Gets inventory on inventory for both user and admin
+  Item.find((err, items) => {
+    if(err)
+      res.send(err)
+    else{
+      res.set('Content-Type', 'application/json');
+      res.status(200).json({
+        message: "Items or something",
+        items: items
       });
-    });
-  });
+    }
+  })
 });
 
 router.get('/recipes/:search_term', (req, res) => {
@@ -46,5 +48,23 @@ router.get('/recipes/:search_term', (req, res) => {
        console.log(error);
      });
 });
+
+
+router.post('/dashboard', (req, res) => {
+  User.findById(req.user._id, function(err, user) {
+    if (err)
+      res.send(err);
+
+    user.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({
+        message: "User Updated!"
+      });
+    });
+  });
+});
+
+
 
 module.exports = router;

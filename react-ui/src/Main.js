@@ -16,7 +16,7 @@ import MealPlanPage from './containers/MealPlanPage.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
 import Tabs from './components/Tabs';
-import AdminPage from './containers/AdminPage.jsx';
+import AdminPage from './containers/Adminpage.jsx';
 
 
 

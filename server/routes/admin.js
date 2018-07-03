@@ -18,21 +18,6 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
-router.get('/inventory', (req, res) => {
-  //Gets inventory on inventory for both user and admin
-  Item.find((err, items) => {
-    if(err)
-      res.send(err)
-    else{
-      res.set('Content-Type', 'application/json');
-      res.status(200).json({
-        message: "Items or something",
-        items: items
-      });
-    }
-  })
-});
-
 router.get('/user-collect', (req, res) => {
 //Gets users information
   console.log("You're authorized as an admin to see this secret message.");
@@ -45,6 +30,21 @@ router.get('/user-collect', (req, res) => {
       res.status(200).json({
         message: "Successfully collected users",
         users: users
+      });
+    }
+  })
+});
+
+router.get('/inventory', (req, res) => {
+  //Gets inventory on inventory for both user and admin
+  Item.find((err, items) => {
+    if(err)
+      res.send(err)
+    else{
+      res.set('Content-Type', 'application/json');
+      res.status(200).json({
+        message: "Items or something",
+        items: items
       });
     }
   })

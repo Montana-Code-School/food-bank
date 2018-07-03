@@ -13,7 +13,7 @@ class Inventory extends React.Component {
 
   componentDidMount() {
 
-    fetch('/admin/inventory', {
+    fetch('/api/inventory', {
     method:'GET',
     headers: {
            'Accept' : 'application/json',

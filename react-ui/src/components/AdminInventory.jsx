@@ -88,7 +88,9 @@ componentDidMount() {
          Authorization: `bearer ${Auth.getToken()}`
        }
    })
-  .then(res => res.json())
+  .then((res) => {
+    // console.log(res.status)
+    return res.json()})
   .then(data => this.setState({items:data.items}))
 }
 

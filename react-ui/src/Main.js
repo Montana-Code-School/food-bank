@@ -12,7 +12,7 @@ import InventoryPage from './containers/InventoryPage.jsx';
 import AdInventory from './components/AdminInventory.jsx';
 import AdMealPlan from './components/AdMealPlan.jsx';
 import Auth from './modules/Auth';
-import MealPlan from './components/MealPlan.jsx';
+import MealPlanPage from './containers/MealPlanPage.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
 import Tabs from './components/Tabs';
@@ -114,7 +114,7 @@ class App extends Component {
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/admin-settings" component={AdminPage}/>
         <PrivateRoute path="/inventory" component={InventoryPage}/>
-        <PrivateRoute path="/mealplan" component={MealPlan}/>
+        <PrivateRoute path="/mealplan" component={MealPlanPage}/>
         <PrivateRoute path="/suggestions" component={Suggestions}/>
         <PrivateRoute path="/helppage" component={HelpPage}/>
         <PrivateRoute path="/adinventory" component={AdInventory}/>

@@ -5,7 +5,6 @@ const ItemSchema = new mongoose.Schema({
   perishable: Boolean,
   category: String,
   quantity: String,
-  recipeUrl: String
 });
 
 

@@ -17,8 +17,6 @@ export default class Roles extends React.Component {
     }
     this.userEmail = React.createRef();
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
-    this.deleteOnClick = this.deleteOnClick.bind(this);
 }
 
 componentDidMount() {

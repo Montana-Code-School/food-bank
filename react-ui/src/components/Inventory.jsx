@@ -33,13 +33,12 @@ class Inventory extends React.Component {
           <td style = {styles.tableRowStyle}>{item.name}</td>
           <td style = {styles.tableRowStyle}>{item.category}</td>
           <td style = {styles.tableRowStyle}>{item.quantity}</td>
-          <td style = {styles.tableRowStyle}><a href={item.recipeUrl} alt = {`${item.name} recipe`}>{item.name} Recipe</a></td>
         </tr>
       )
 
     return (
         <Card style = {styles.cardStyle} className="container" align="center">
-          <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock and recipe suggestions!" />
+          <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock!" />
           <div style = {styles.tableDivStyle}>
             <table style = {styles.tableRowStyle}>
               <tbody>
@@ -47,7 +46,6 @@ class Inventory extends React.Component {
                   <th style = {styles.tableRowStyle}><strong>Name</strong></th>
                   <th style = {styles.tableRowStyle}><strong>Category</strong></th>
                   <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
-                  <th style = {styles.tableRowStyle}><strong>Recipes</strong></th>
                 </tr>
               {itemComponents}
               </tbody>

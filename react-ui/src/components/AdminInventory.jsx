@@ -18,7 +18,6 @@ class AdInventory extends React.Component {
     this.addName = React.createRef();
     this.addCategory = React.createRef();
     this.addQuantity = React.createRef();
-    this.addRecipeUrl = React.createRef();
     this.createItem = this.createItem.bind(this);
     this.editItem = this.editItem.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +33,6 @@ class AdInventory extends React.Component {
       name: this.addName.current.input.value,
       category: this.state.foodCategory,
       quantity:this.addQuantity.current.input.value,
-      recipeUrl: this.addRecipeUrl.current.input.value
     }
     console.log(value);
     fetch('/admin/inventory', {
@@ -57,7 +55,6 @@ class AdInventory extends React.Component {
       name: this.addName.current.input.value,
       category: this.state.foodCategory,
       quantity: this.addQuantity.current.input.value,
-      recipeUrl: this.addRecipeUrl.current.input.value
     }
     fetch(searchUrl, {
        method: 'PUT',
@@ -100,12 +97,6 @@ render() {
         <td style = {styles.tableRowStyle}>{item.name}</td>
         <td style = {styles.tableRowStyle}>{item.category}</td>
         <td style = {styles.tableRowStyle}>{item.quantity}</td>
-        <td style = {styles.tableRowStyle}>
-          <a href={item.recipeUrl}
-            alt = {`${item.name} recipe`}
-          >{item.name} Recipe
-          </a>
-        </td>
         <td style = {styles.tableRowStyle}>
           <RaisedButton
             onClick={this.editItem}
@@ -156,15 +147,6 @@ render() {
                 ref = {this.addQuantity}
                 style = {styles.inputStyle}
               />
-              <TextField
-                floatingLabelText="Recipe URL"
-                name="Recipe Url"
-                multiLine={false}
-                rows={1}
-                rowsMax={1}
-                ref = {this.addRecipeUrl}
-                style = {styles.inputStyle}
-              />
             </div>
           </form>
         <div>
@@ -177,7 +159,6 @@ render() {
                 <th style = {styles.tableRowStyle}><strong>Name</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Category</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
-                <th style = {styles.tableRowStyle}><strong>Recipe</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Edit</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Delete</strong></th>
 

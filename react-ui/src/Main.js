@@ -66,7 +66,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.toggleAuthenticateStatus()
     fetch('/api/dashboard', {
       METHOD : "GET",

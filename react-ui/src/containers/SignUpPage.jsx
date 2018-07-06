@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SignUpForm from '../components/SignUpForm.jsx';
-
+import { Card, CardTitle, CardText } from 'material-ui/Card';
+import Carousel from '../components/ImageCarousel.jsx';
 
 class SignUpPage extends React.Component {
 
@@ -48,8 +49,6 @@ class SignUpPage extends React.Component {
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
-    console.log(this.state.user.role);
-    console.log(formData);
       if (xhr.status === 200) {
         // success
         // change the component-container state
@@ -71,7 +70,6 @@ class SignUpPage extends React.Component {
       }
     });
     xhr.addEventListener('error', () => {
-      console.log("hello hello");
     }, false);
    xhr.send(formData);
   }
@@ -94,12 +92,22 @@ class SignUpPage extends React.Component {
    */
   render() {
     return (
-      <SignUpForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+        <div style={styles.mainDiv}>
+          <Card className="container" align="center" style = {styles.introCard}>
+            <CardTitle title="What's at the food bank?" />
+            <CardText><strong>The one stop shop for meal planning with your local food bank's ingredients</strong></CardText>
+            <Carousel />
+          </Card>
+          <Card style = {styles.signUpCard}>
+            <SignUpForm
+              onSubmit={this.processForm}
+              onChange={this.changeUser}
+              errors={this.state.errors}
+              user={this.state.user}
+            />
+          </Card>
+        </div>
+
     );
   }
 }
@@ -109,3 +117,26 @@ SignUpPage.contextTypes = {
 };
 
 export default SignUpPage;
+
+const styles = {
+  mainDiv: {
+    display: "flex",
+    marginTop: 10,
+    alignItems: "center",
+    flexWrap  : "wrap",
+    width: '100%',
+    justifyContent: 'space-evenly'
+  },
+  introCard: {
+    height: 500,
+    width: '69%',
+    marginRight: 5
+  },
+  signUpCard: {
+    height: 500,
+    textAlign : "center",
+    paddingTop: 60,
+    width: '30%',
+    marginLeft: 6
+  }
+}

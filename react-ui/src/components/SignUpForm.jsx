@@ -12,7 +12,6 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container" align="center">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
@@ -55,7 +54,6 @@ const SignUpForm = ({
 
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
     </form>
-  </Card>
 );
 
 SignUpForm.propTypes = {
@@ -66,3 +64,9 @@ SignUpForm.propTypes = {
 };
 
 export default SignUpForm;
+
+const styles = {
+  container: {
+    padding: 40
+  }
+}

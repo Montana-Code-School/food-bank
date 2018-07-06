@@ -1,10 +1,8 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
-import SignUpPage from '../containers/SignUpPage';
-import { Card, CardText } from 'material-ui/Card';
 
-class DashboardPage extends React.Component {
+class Home extends React.Component {
 
   /**
    * Class constructor.

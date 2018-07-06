@@ -3,7 +3,6 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import HomePage from './components/HomePage.jsx';
 import LoginPage from './containers/LoginPage.jsx';
 import LogoutFunction from './containers/LogoutFunction.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
@@ -110,7 +109,7 @@ class App extends Component {
           <div>
             <Tabs adminStatus = {this.state.adminStatus} authenticated= {this.state.authenticated}/>
           </div>
-        <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+        <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/admin-settings" component={AdminPage}/>
         <PrivateRoute path="/inventory" component={InventoryPage}/>

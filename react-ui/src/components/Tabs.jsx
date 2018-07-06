@@ -11,6 +11,7 @@ const styles = theme => ({
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,
+    marginBottom: 10
   },
   tabs: {
     width: '12.5%',
@@ -55,9 +56,8 @@ handleChange = (event, value) => {
               <Tab style = {styles.tabs} label="Inventory" component = {Link} to="/inventory"/>
               <Tab style = {styles.tabs} label="Meal Plan" component = {Link} to="/mealplan"/>}
               <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
-              <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>       
+              <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
               {this.props.adminStatus ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/> : "" }
-              {this.props.authenticated ? "" : <Tab style = {styles.tabs} label= 'Sign Up' component={Link} to="/signup"/> }
               <Tab label={this.props.authenticated ? "Log Out" : "Log In"} component={Link} to={this.props.authenticated ? "/logout" : "/login"}/>
           </Tabs>
         </AppBar>

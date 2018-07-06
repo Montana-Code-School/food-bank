@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardTitle} from 'material-ui/Card';
 import Auth from '../modules/Auth';
 
-
 class Inventory extends React.Component {
   constructor(props) {
     super(props)
@@ -14,12 +13,12 @@ class Inventory extends React.Component {
   componentDidMount() {
 
     fetch('/api/inventory', {
-    method:'GET',
-    headers: {
-           'Accept' : 'application/json',
-           'Content-Type' : 'application/json',
-           Authorization: `bearer ${Auth.getToken()}`
-         }
+      method:'GET',
+      headers: {
+             'Accept' : 'application/json',
+             'Content-Type' : 'application/json',
+             Authorization: `bearer ${Auth.getToken()}`
+       }
      })
     .then(res => res.json())
     .then(data =>{

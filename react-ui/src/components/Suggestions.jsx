@@ -3,8 +3,6 @@ import { Card, CardTitle} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-
-
 class Suggestions extends React.Component {
   render() {
     return (

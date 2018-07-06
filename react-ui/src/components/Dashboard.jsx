@@ -5,14 +5,13 @@ import Carousel from '../components/ImageCarousel.jsx';
 import Button from '@material-ui/core/Button'
 import {Link} from 'react-router-dom';
 
-
 const Dashboard = ({ secretData, user }) => (
   <Card className="container" align="center" style = {styles.container}>
     <CardTitle
       title="Dashboard"
     />
     <CardText style={{ fontSize: '16px', color: 'green' }}>
-          Welcome <strong>{user.name}</strong>!
+        Welcome <strong>{user.name}</strong>!
       <br />
     </CardText>
     <div style = {styles.buttons} >
@@ -21,7 +20,7 @@ const Dashboard = ({ secretData, user }) => (
       <Button component = {Link} color="secondary" to="/helppage">Help Page</Button>
       <Button component = {Link} color="secondary" to="/suggestions">Suggestions</Button>
     </div>
-    <Carousel/>
+    <Carousel />
   </Card>
 );
 

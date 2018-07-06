@@ -6,9 +6,6 @@ import { Card, CardText } from 'material-ui/Card';
 
 class DashboardPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
 
@@ -18,11 +15,7 @@ class DashboardPage extends React.Component {
     };
   }
 
-  /**
-   * This method will be executed after initial rendering.
-   */
   componentDidMount() {
-
     fetch('/api/dashboard',{
       method: 'GET',
       headers: {
@@ -40,14 +33,11 @@ class DashboardPage extends React.Component {
       }
     })
  }
-  /**
-   * Render the component.
-   */
+
   render() {
     return (
       <Dashboard secretData={this.state.secretData} user={this.state.user} />);
   }
-
 }
 
 export default DashboardPage;

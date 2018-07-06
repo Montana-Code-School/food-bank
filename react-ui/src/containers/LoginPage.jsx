@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
 import LoginForm from '../components/LoginForm.jsx';
 
-
 export default class LoginPage extends React.Component {
 
   /**
@@ -11,10 +10,8 @@ export default class LoginPage extends React.Component {
    */
   constructor(props, context) {
     super(props, context);
-
     const storedMessage = localStorage.getItem('successMessage');
     let successMessage = '';
-
     if (storedMessage) {
       successMessage = storedMessage;
       localStorage.removeItem('successMessage');
@@ -56,27 +53,15 @@ export default class LoginPage extends React.Component {
     xhr.addEventListener('load', () => {
 
       if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
         this.setState({
           errors: {}
         });
-
-        // save the token
-        Auth.authenticateUser(xhr.response.token);
-
-        // update authenticated state
-        this.props.toggleAuthenticateStatus()
-
-        // redirect signed in user to dashboard
-        this.props.history.push('/dashboard');
+      Auth.authenticateUser(xhr.response.token);
+      this.props.toggleAuthenticateStatus()
+      this.props.history.push('/dashboard');
       } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
+          const errors = xhr.response.errors ? xhr.response.errors : {};
+          errors.summary = xhr.response.message;
 
         this.setState({
           errors
@@ -86,11 +71,6 @@ export default class LoginPage extends React.Component {
     xhr.send(formData);
    }
 
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   changeUser(event) {
     const field = event.target.name;
     const user = this.state.user;
@@ -101,9 +81,6 @@ export default class LoginPage extends React.Component {
     });
   }
 
-  /**
-   * Render the component.
-   */
   render() {
     return (
       <LoginForm
@@ -115,7 +92,6 @@ export default class LoginPage extends React.Component {
       />
     );
   }
-
 }
 
 LoginPage.contextTypes = {

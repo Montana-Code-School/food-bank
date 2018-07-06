@@ -5,9 +5,6 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
-
-
-
 class MealPlanPage extends React.Component {
 
   constructor(props) {
@@ -17,11 +14,9 @@ class MealPlanPage extends React.Component {
       plans: [],
       recipeId: ''
     };
-
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.findRecipe = this.findRecipe.bind(this);
     this.storeSearchTerm = this.storeSearchTerm.bind(this);
-
   }
 
   handleExpandClick (index) {
@@ -88,7 +83,6 @@ class MealPlanPage extends React.Component {
        plans:tempArr
      })
      })
-
   }
 
   render() {
@@ -103,25 +97,25 @@ class MealPlanPage extends React.Component {
           expanded = {plan.expanded}
         />
       )
-    }else {
+    } else {
       mealPlans = (<div></div>)
-    }
+      }
 
     return (
       <div>
-      <div style={styles.searchBox}>
-      <Paper>
-        <Input
-        onChange={this.storeSearchTerm}
-        />
-        <Button variant="outlined" color="primary" onClick={this.findRecipe}>
-          Search
-        </Button>
-      </Paper>
-      </div>
-      <div style={styles.recipesContainer}>
-        {mealPlans}
-      </div>
+        <div style={styles.searchBox}>
+        <Paper>
+          <Input
+          onChange={this.storeSearchTerm}
+          />
+          <Button variant="outlined" color="primary" onClick={this.findRecipe}>
+            Search
+          </Button>
+        </Paper>
+        </div>
+        <div style={styles.recipesContainer}>
+          {mealPlans}
+        </div>
       </div>
     );
   }
@@ -141,6 +135,5 @@ const styles = {
 
   }
 };
-
 
 export default MealPlanPage;

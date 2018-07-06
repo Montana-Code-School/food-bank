@@ -24,7 +24,6 @@ class AdInventory extends React.Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
   handleChange(event) {
-    console.log(event.target.name);
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -34,7 +33,6 @@ class AdInventory extends React.Component {
       category: this.state.foodCategory,
       quantity:this.addQuantity.current.input.value,
     }
-    console.log(value);
     fetch('/admin/inventory', {
        method: 'POST',
        headers: {
@@ -50,7 +48,6 @@ class AdInventory extends React.Component {
 
   editItem(evt) {
     let searchUrl='/admin/inventory/' + evt.currentTarget.dataset.id
-    console.log(searchUrl);
     const value = {
       name: this.addName.current.input.value,
       category: this.state.foodCategory,
@@ -86,7 +83,6 @@ componentDidMount() {
        }
    })
   .then((res) => {
-    // console.log(res.status)
     return res.json()})
   .then(data => this.setState({items:data.items}))
 }
@@ -161,7 +157,6 @@ render() {
                 <th style = {styles.tableRowStyle}><strong>Quantity</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Edit</strong></th>
                 <th style = {styles.tableRowStyle}><strong>Delete</strong></th>
-
               </tr>
               {itemComponents}
           </tbody>

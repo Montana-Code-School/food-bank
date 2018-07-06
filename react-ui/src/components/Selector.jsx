@@ -6,20 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
-  },
-});
-
 class Selector extends React.Component {
 
   render() {
@@ -39,7 +25,7 @@ class Selector extends React.Component {
           >
           <MenuItem value="">
               <em>None</em>
-            </MenuItem>
+          </MenuItem>
             {MenuItems}
           </Select>
         </FormControl>
@@ -50,5 +36,19 @@ class Selector extends React.Component {
 Selector.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2,
+  },
+});
 
 export default withStyles(styles)(Selector);

@@ -18,12 +18,11 @@ class AdminStatusAlert extends React.Component {
     let foundEmail = this.props.users.filter((element) => {
       if (element.email === this.props.email) {
         return element
-        }
-      })
+      }
+    })
 
     if (foundEmail.length === 1) {
       let searchUrl='/admin/user-collect/' + foundEmail[0]._id
-
       const value = {
         role: "admin"
       }
@@ -36,10 +35,10 @@ class AdminStatusAlert extends React.Component {
            Authorization: `bearer ${Auth.getToken()}`
          },
          body:JSON.stringify(value)
-       })
+      })
        .then ( res   => res.json())
        .then ( data  => console.log(data))
-     }
+    }
   };
 
   handleClose = () => {

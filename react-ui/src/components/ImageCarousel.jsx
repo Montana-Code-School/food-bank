@@ -17,61 +17,61 @@ import breads from '../photos/breads.jpg';
 import cheese from '../photos/cheese.jpg';
 
 export default class ImageCarousel extends React.Component {
-    render() {
-        return (
-          <Carousel
-            autoPlay
-            showStatus = {false}
-            interval = {2000}
-            showThumbs = {false}
-            showIndicators = {false}
-            width = {500}
-            dynamicHeight = {true}
-            stopOnHover = {true}
-          >
-             <div>
-               <img src={veggies1} />
-             </div>
-             <div>
-               <img src={breads}  />
-             </div>
-             <div>
-               <img src={cheese}  />
-             </div>
-             <div>
-               <img src={fruits1}  />
-             </div>
-             <div>
-               <img src={fruits2} />
-             </div>
-             <div>
-               <img src={veggies2} />
-             </div>
-             <div>
-               <img src={fruits3} />
-             </div>
-             <div>
-               <img src={veggies3}/>
-             </div>
-             <div>
-               <img src={fruits4} />
-             </div>
-             <div>
-               <img src={veggies4} />
-             </div>
-             <div>
-               <img src={fruits5}/>
-             </div>
-             <div>
-               <img src={veggies5} />
-             </div>
-             <div>
-               <img src={fruits6}/>
-             </div>
-             <div>
-               <img src={veggies6} />
-             </div>
-          </Carousel>
-        );
-    }
+  render() {
+    return (
+      <Carousel
+        autoPlay
+        showStatus = {false}
+        interval = {2000}
+        showThumbs = {false}
+        showIndicators = {false}
+        width = {500}
+        dynamicHeight = {true}
+        stopOnHover = {true}
+      >
+         <div>
+           <img src={veggies1} />
+         </div>
+         <div>
+           <img src={breads}  />
+         </div>
+         <div>
+           <img src={cheese}  />
+         </div>
+         <div>
+           <img src={fruits1}  />
+         </div>
+         <div>
+           <img src={fruits2} />
+         </div>
+         <div>
+           <img src={veggies2} />
+         </div>
+         <div>
+           <img src={fruits3} />
+         </div>
+         <div>
+           <img src={veggies3}/>
+         </div>
+         <div>
+           <img src={fruits4} />
+         </div>
+         <div>
+           <img src={veggies4} />
+         </div>
+         <div>
+           <img src={fruits5}/>
+         </div>
+         <div>
+           <img src={veggies5} />
+         </div>
+         <div>
+           <img src={fruits6}/>
+         </div>
+         <div>
+           <img src={veggies6} />
+         </div>
+      </Carousel>
+    );
+  }
 };

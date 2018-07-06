@@ -4,9 +4,6 @@ import Dashboard from '../components/Dashboard.jsx';
 
 class Home extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
 
@@ -16,11 +13,7 @@ class Home extends React.Component {
     };
   }
 
-  /**
-   * This method will be executed after initial rendering.
-   */
   componentDidMount() {
-
     fetch('/api/dashboard',{
       method: 'GET',
       headers: {
@@ -38,14 +31,10 @@ class Home extends React.Component {
       }
     })
  }
-  /**
-   * Render the component.
-   */
   render() {
     return (
       <Dashboard secretData={this.state.secretData} user={this.state.user} />);
   }
-
 }
 
 export default DashboardPage;

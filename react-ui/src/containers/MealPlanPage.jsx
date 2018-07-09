@@ -59,32 +59,32 @@ class MealPlanPage extends React.Component {
      })
   }
 
-  componentWillMount() {
-    fetch('/api/recipes/' + 'pasta', {
-      method: 'GET',
-      headers: {
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json',
-        Authorization: `bearer ${Auth.getToken()}`
-      }
-    })
-    .then ( ( res )  => {return res.json()})
-    .then (( data ) => {
-      let tempArr = [];
-      for (var i = 0; i < data.length; i++) {
-        let obj = {
-          image_url: data[i].image_url,
-          recipe_id: data[i].recipe_id,
-          title: data[i].title,
-          expanded: false
-        }
-        tempArr.push(obj);
-     }
-     this.setState({
-       plans:tempArr
-     })
-     })
-  }
+  // componentDidMount() {
+  //   fetch('/api/recipes/' + 'pasta', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept' : 'application/json',
+  //       'Content-Type' : 'application/json',
+  //       Authorization: `bearer ${Auth.getToken()}`
+  //     }
+  //   })
+  //   .then ( ( res )  => {return res.json()})
+  //   .then (( data ) => {
+  //     let tempArr = [];
+  //     for (var i = 0; i < data.length; i++) {
+  //       let obj = {
+  //         image_url: data[i].image_url,
+  //         recipe_id: data[i].recipe_id,
+  //         title: data[i].title,
+  //         expanded: false
+  //       }
+  //       tempArr.push(obj);
+  //    }
+  //    this.setState({
+  //      plans:tempArr
+  //    })
+  //    })
+  // }
 
   render() {
     let mealPlans;
@@ -100,7 +100,7 @@ class MealPlanPage extends React.Component {
       )
     } else {
       mealPlans = (<div></div>)
-      }
+    }
 
     return (
       <div>
@@ -119,7 +119,6 @@ class MealPlanPage extends React.Component {
             Search
           </Button>
         </Paper>
-        </div>
         <div style={styles.recipesContainer}>
           {mealPlans}
         </div>

@@ -105,10 +105,8 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <div>
-            <Tabs adminStatus = {this.state.adminStatus} authenticated= {this.state.authenticated}/>
-          </div>
+      <div>
+        <Tabs adminStatus = {this.state.adminStatus} authenticated= {this.state.authenticated}/>
         <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
         <PrivateRoute path="/dashboard" component={DashboardPage}/>
         <PrivateRoute path="/admin-settings" component={AdminPage}/>

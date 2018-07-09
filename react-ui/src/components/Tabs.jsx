@@ -56,6 +56,7 @@ class ScrollableTabsButtonAuto extends React.Component {
 
 const styles = theme => ({
   root: {
+    marginTop: 25, //is this working?
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,

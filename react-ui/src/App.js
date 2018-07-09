@@ -58,6 +58,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log("app adminStatus", this.state.adminStatus);
     return (
     <div>
       <MuiThemeProvider muiTheme={getMuiTheme()}>

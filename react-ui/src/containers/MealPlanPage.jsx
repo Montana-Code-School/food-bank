@@ -58,7 +58,7 @@ class MealPlanPage extends React.Component {
      })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/api/recipes/' + 'pasta', {
       method: 'GET',
       headers: {

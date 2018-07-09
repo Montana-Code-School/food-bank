@@ -43,7 +43,7 @@ class SignUpPage extends React.Component {
         });
 
         localStorage.setItem('successMessage', xhr.response.message);
-
+       // do you need to call toggle auth?
         this.props.history.push('/login');
       }
       else {

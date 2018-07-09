@@ -4,6 +4,7 @@ import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Tabs from '../components/Tabs';
 
 class MealPlanPage extends React.Component {
 
@@ -103,6 +104,12 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
+        <Tabs
+          adminStatus = {this.props.adminStatus}
+          authenticated= {this.props.authenticated}
+          value = {this.props.value}
+          handleChange = {this.props.handleChange}
+        />
         <div style={styles.searchBox}>
         <Paper>
           <Input

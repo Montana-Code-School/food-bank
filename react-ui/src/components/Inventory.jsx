@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardTitle} from 'material-ui/Card';
 import Auth from '../modules/Auth';
+import Tabs from '../components/Tabs';
 
 class Inventory extends React.Component {
   constructor(props) {
@@ -36,6 +37,13 @@ class Inventory extends React.Component {
       )
 
     return (
+      <div>
+        <Tabs
+          adminStatus = {this.props.adminStatus}
+          authenticated= {this.props.authenticated}
+          value = {this.props.value}
+          handleChange = {this.props.handleChange}
+        />
         <Card style = {styles.cardStyle} className="container" align="center">
           <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock!" />
           <div style = {styles.tableDivStyle}>
@@ -51,6 +59,7 @@ class Inventory extends React.Component {
             </table>
           </div>
         </Card>
+      </div>
     )
   }
 };

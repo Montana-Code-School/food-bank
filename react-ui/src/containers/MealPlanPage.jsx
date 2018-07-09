@@ -99,12 +99,11 @@ class MealPlanPage extends React.Component {
       )
     } else {
       mealPlans = (<div></div>)
-      }
+    }
 
     return (
       <div>
-        <div style={styles.searchBox}>
-        <Paper>
+        <Paper style={styles.searchBox} >
           <Input
           onChange={this.storeSearchTerm}
           />
@@ -112,7 +111,6 @@ class MealPlanPage extends React.Component {
             Search
           </Button>
         </Paper>
-        </div>
         <div style={styles.recipesContainer}>
           {mealPlans}
         </div>

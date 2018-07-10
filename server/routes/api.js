@@ -30,25 +30,44 @@ router.get('/inventory', (req, res) => {
   })
 });
 
-router.get('/recipes/:search_term', (req, res) => {
-     console.log(req.params.search_term);
-      let foodItem = req.params.search_term;
-      let apiKey = '7e67a4fb022eb04b5c0f2e087119c728';
-      let urlKey = 'http://food2fork.com/api/search?key=';
-      let searchField = '&q=' + foodItem;
-      let count = '&count=5';
+const getIngreds = async (recipe) => {
+    let apiKey = '7e67a4fb022eb04b5c0f2e087119c728';
+    let recipeUrl = 'http://food2fork.com/api/get?key=';
+    let recipeId = '&rId=' + recipe.recipe_id;
 
-     axios.get(urlKey + apiKey + searchField + count)
-     .then( (response) => {
-       res.json(response.data.recipes);
-       console.log(response.data.recipes);
-     })
+    return await axios.get(recipeUrl + apiKey + recipeId)
+    .then( (response) => {
+      return response.data.recipe.ingredients;
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
+}
 
-     .catch( (error) => {
-       console.log(error);
-     });
-});
+const getRecipesIngreds = async (req, res) => {
+   let foodItem = req.params.search_term;
+   let apiKey = '7e67a4fb022eb04b5c0f2e087119c728';
+   let searchUrl = 'http://food2fork.com/api/search?key=';
+   let searchField = '&q=' + foodItem;
 
+   let count = '&count=1';
+
+  const recipes = await axios.get(searchUrl + apiKey + searchField + count)
+  .then( (response) => {
+    return response.data.recipes;
+  })
+  .catch( (error) => {
+    console.log(error);
+  });
+
+  for (var i = 0; i < recipes.length; i++) {
+    recipes[i]
+    recipes[i].ingredients = await getIngreds(recipes[i]);
+  }
+  res.json(recipes);
+}
+
+router.get('/recipes/:search_term', getRecipesIngreds);
 
 router.post('/dashboard', (req, res) => {
   User.findById(req.user._id, function(err, user) {

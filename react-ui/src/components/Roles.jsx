@@ -4,6 +4,7 @@ import { Card } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import AdminStatusAlert from './AdminStatusAlert.jsx';
 import DeleteStatusAlert from './DeleteStatusAlert.jsx';
+import Tabs from '../components/Tabs';
 
 export default class Roles extends React.Component {
   constructor(props) {

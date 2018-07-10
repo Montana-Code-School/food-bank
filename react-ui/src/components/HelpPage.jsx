@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
+import Tabs from '../components/Tabs';
 
 class Help extends React.Component {
   render() {
@@ -39,7 +40,7 @@ class Help extends React.Component {
                    Based on the number of people in your household, you are able to select food from the choices available that day.
                     Once you have completed shopping, our volunteer grocery boxers will make sure you received the allotted amount
                       and will box your groceries for easy transport.
-                 </CardText>
+                 </CardText>=
             </Card>
             <Card style = {styles.innerCards} >
               <CardTitle title="3" subtitle="Shop & Go!" />

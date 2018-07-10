@@ -4,6 +4,7 @@ import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Tabs from '../components/Tabs';
 
 class MealPlanPage extends React.Component {
 
@@ -49,7 +50,9 @@ class MealPlanPage extends React.Component {
           recipe_id: data[i].recipe_id,
           title: data[i].title,
           expanded: false,
-          ingredients: data[i].ingredients
+          ingredients: data[i].ingredients,
+          publisher: data[i].publisher,
+          source_url: data[i].source_url
         }
 
         tempArr.push(obj);
@@ -61,8 +64,6 @@ class MealPlanPage extends React.Component {
   }
 
   render() {
-    console.log("this.state.plans", this.state.plans);
-
     let mealPlans;
     if (this.state.plans.length !== 0) {
       mealPlans = this.state.plans.map((plan, index) =>
@@ -73,6 +74,8 @@ class MealPlanPage extends React.Component {
           imageUrl = {plan.image_url}
           expanded = {plan.expanded}
           ingredients = {plan.ingredients}
+          publisher = {plan.publisher}
+          source_url = {plan.source_url}
         />
       )
     } else {

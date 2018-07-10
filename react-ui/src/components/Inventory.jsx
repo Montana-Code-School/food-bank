@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardTitle} from 'material-ui/Card';
 import Auth from '../modules/Auth';
+import Tabs from '../components/Tabs';
 
 class Inventory extends React.Component {
   constructor(props) {

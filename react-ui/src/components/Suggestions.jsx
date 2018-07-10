@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardTitle} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Tabs from '../components/Tabs';
 
 class Suggestions extends React.Component {
   render() {

@@ -23,8 +23,8 @@ const PORT = process.env.PORT || 5000;
   passport.use('local-signup', localSignupStrategy);
   passport.use('local-login', localLoginStrategy);
 
-  const authCheckMiddleware = require('./middleware/auth-check');
-  app.use('/api', authCheckMiddleware);
+  // const authCheckMiddleware = require('./middleware/auth-check');
+  // app.use('/api', authCheckMiddleware);
 
   // const adminCheckMiddleware = require('./middleware/admin-check');
   // app.use('/admin', adminCheckMiddleware);

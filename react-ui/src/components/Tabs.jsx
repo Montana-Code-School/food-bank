@@ -22,7 +22,6 @@ class ScrollableTabsButtonAuto extends React.Component {
   handleChange = (event, value) => {
     this.setState({ value });
   };
-
     render() {
       const { classes } = this.props;
       const { value } = this.state;

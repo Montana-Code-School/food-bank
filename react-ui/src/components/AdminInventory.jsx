@@ -4,7 +4,6 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Auth from '../modules/Auth';
 import Selector from './Selector.jsx'
-import Tabs from '../components/Tabs';
 
 class AdInventory extends React.Component {
   constructor(props) {
@@ -114,12 +113,6 @@ render() {
     )
     return (
     <div>
-      <Tabs
-        value = {this.props.value}
-        adminStatus = {this.props.adminStatus}
-        authenticated= {this.props.authenticated}
-        handleChange = {this.props.handleChange}
-      />
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>

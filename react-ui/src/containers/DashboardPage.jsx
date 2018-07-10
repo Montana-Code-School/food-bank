@@ -38,11 +38,6 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <div>
-        <Tabs
-          adminStatus = {this.props.adminStatus}
-          authenticated= {this.props.authenticated}
-          value = {this.props.value}
-        />
         <Dashboard secretData={this.state.secretData} user={this.state.user} />
       </div>
     );

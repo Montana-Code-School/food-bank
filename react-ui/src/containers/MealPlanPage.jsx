@@ -49,7 +49,8 @@ class MealPlanPage extends React.Component {
           image_url: data[i].image_url,
           recipe_id: data[i].recipe_id,
           title: data[i].title,
-          expanded: false
+          expanded: false,
+          ingredients: data[i].ingredients
         }
         tempArr.push(obj);
        }
@@ -60,6 +61,7 @@ class MealPlanPage extends React.Component {
   }
 
   render() {
+    console.log(this.state.plans)
     let mealPlans;
     if (this.state.plans.length !== 0) {
       mealPlans = this.state.plans.map((plan, index) =>
@@ -77,12 +79,6 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Tabs
-          adminStatus = {this.props.adminStatus}
-          authenticated= {this.props.authenticated}
-          value = {this.props.value}
-          handleChange = {this.props.handleChange}
-        />
         <Paper>
           <Input
           onChange={this.storeSearchTerm}

@@ -53,68 +53,48 @@ const PropsRoute = ({ component: Component, ...rest }) => (
 )
 
 class Main extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      value: 0,
-    };
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange = (event, value) => {
-     this.setState({ value });
-   };
-
   render() {
     const { value } = this.props;
     return (
       <div>
-        <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
+        <Tabs />
+        <PropsRoute
+          exact path="/"
+          component={SignUpPage}
+          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()}
+        />
         <PrivateRoute path="/dashboard"
-         component={DashboardPage}
-         value = {this.state.value}
-         handleChange = {() => this.handleChange}
-         adminStatus = {this.props.adminStatus}
+          component={DashboardPage}
+          adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/admin-settings"
           component={AdminPage}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/inventory"
           component={InventoryPage}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/mealplan"
           component={MealPlanPage}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/suggestions"
           component={Suggestions}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/helppage"
           component={HelpPage}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
         <PrivateRoute path="/adinventory"
           component={AdInventory}
-          value = {this.state.value}
-          handleChange = {() => this.handleChange}
           adminStatus = {this.props.adminStatus}
         />
-        <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus}
-          value = {this.state.value} handleChange = {() => this.handleChange}/>
+        <LoggedOutRoute path="/login"
+          component={LoginPage}
+          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus}
+        />
         <Route path="/logout" component={LogoutFunction}/>
       </div>
     );

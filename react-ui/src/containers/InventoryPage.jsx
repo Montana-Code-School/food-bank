@@ -47,11 +47,7 @@ class InventoryPage extends React.Component {
       .then ( ( res )  => {return res.json()})
       .then (( data ) => console.log(data));
     }
-
-    submitForm() {
-        console.log(this.add)
-      }
-
+    
 render() {
     const AdminView = () => { return this.state.user.role === "admin" ? (
       <div>

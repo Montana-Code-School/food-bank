@@ -2,7 +2,6 @@ import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
 import SignUpPage from '../containers/SignUpPage';
-import Tabs from '../components/Tabs';
 import { Card, CardText } from 'material-ui/Card';
 
 class DashboardPage extends React.Component {

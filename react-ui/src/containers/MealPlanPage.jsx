@@ -4,7 +4,6 @@ import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Tabs from '../components/Tabs';
 
 class MealPlanPage extends React.Component {
 

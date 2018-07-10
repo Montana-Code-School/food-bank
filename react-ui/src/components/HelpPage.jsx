@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-import Tabs from '../components/Tabs';
 
 class Help extends React.Component {
   render() {

@@ -12,7 +12,7 @@ class AdInventory extends React.Component {
     this.state = {
       items: [],
       foodCategory: '',
-      foodCategories: ['Meat', 'Fruit', 'Vegetable', 'Canned'],
+      foodCategories: ['Fruit', 'Grain', 'Oil', 'Protein', 'Vegetable', 'Other'],
       name: ''
     }
 
@@ -44,7 +44,14 @@ class AdInventory extends React.Component {
        body:JSON.stringify(value)
      })
      .then ( res   => res.json())
-     .then ( data  => this.setState({items:data.items}))
+     .then ( (data)  => {
+       this.setState({
+         items:data.items,
+         foodCategory:''
+       })
+       this.addName.current.input.value = '';
+       this.addQuantity.current.input.value = '';
+     })
   }
 
   editItem(evt) {
@@ -115,7 +122,7 @@ render() {
     return (
     <div>
       <Card style = {styles.cardStyle} className="container" align="center">
-        <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
+        <CardTitle title="Inventory" subtitle="Maintain your inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>
             <div>
               <TextField
@@ -127,14 +134,6 @@ render() {
                 ref = {this.addName}
                 style = {styles.inputStyle}
               />
-              <Selector
-                name={this.state.name}
-                foodCategory={this.state.foodCategory}
-                foodCategories={this.state.foodCategories}
-                handleChange={this.handleChange}
-              />
-            </div>
-            <div>
               <TextField
                 floatingLabelText="Quantity"
                 name="Quantity"
@@ -144,10 +143,19 @@ render() {
                 ref = {this.addQuantity}
                 style = {styles.inputStyle}
               />
-            </div>
+              </div>
+              <div style={{textAlign:'center'}}>
+              <Selector
+                name={this.state.name}
+                foodCategory={this.state.foodCategory}
+                foodCategories={this.state.foodCategories}
+                handleChange={this.handleChange}
+                style = {styles.selectorStyle}
+              />
+              </div>
           </form>
         <div>
-          <RaisedButton onClick={this.createItem} type="submit" label="Submit" primary />
+          <RaisedButton onClick={this.createItem} type="submit" label="Submit" primary aria-label="submit"/>
         </div>
         <div style = {styles.tableDivStyle}>
           <table style = {styles.tableRowStyle}>
@@ -182,7 +190,7 @@ const styles= {
   tableRowStyle: {
     borderColor: 'black',
     borderWidth: 1,
-    borderStyle: 'solid'
+    borderStyle: 'solid',
   },
   tableDivStyle: {
     margin: 15,
@@ -193,13 +201,21 @@ const styles= {
     padding: 10
   },
   inputDiv: {
-    flex:1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center'
+
   },
   inputStyle:{
     margin: 10
   },
   titleStyle: {
     marginBottom:-30
+  },
+  selectorStyle: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 }

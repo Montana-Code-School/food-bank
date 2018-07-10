@@ -42,17 +42,6 @@ class Help extends React.Component {
                       and will box your groceries for easy transport.
                  </CardText>=
             </Card>
-            <Card style = {styles.innerCards} >
-              <CardTitle title="3" subtitle="Shop & Go!" />
-               <CardText>
-                  You're on your way to nourishing food.
-               </CardText>
-               <CardText>
-                 Based on the number of people in your household, you are able to select food from the choices available that day.
-                  Once you have completed shopping, our volunteer grocery boxers will make sure you received the allotted amount
-                    and will box your groceries for easy transport.
-               </CardText>
-            </Card>
           </div>
         </Card>
         <Card style = {styles.cardTwo}>

@@ -50,7 +50,7 @@ const getRecipesIngreds = async (req, res) => {
    let searchUrl = 'http://food2fork.com/api/search?key=';
    let searchField = '&q=' + foodItem;
 
-   let count = '&count=5';
+   let count = '&count=1';
 
   const recipes = await axios.get(searchUrl + apiKey + searchField + count)
   .then( (response) => {

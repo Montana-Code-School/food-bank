@@ -1,7 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
 import { Card } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import AdminStatusAlert from './AdminStatusAlert.jsx';
 import DeleteStatusAlert from './DeleteStatusAlert.jsx';
@@ -23,11 +22,11 @@ export default class Roles extends React.Component {
     fetch('/admin/user-collect', {
       method:'GET',
       headers: {
-             'Accept' : 'application/json',
-             'Content-Type' : 'application/json',
-             Authorization: `bearer ${Auth.getToken()}`
+         'Accept' : 'application/json',
+         'Content-Type' : 'application/json',
+         Authorization: `bearer ${Auth.getToken()}`
        }
-     })
+    })
     .then(res => res.json())
     .then((data) => {
       this.setState({users:data.users})
@@ -43,12 +42,6 @@ export default class Roles extends React.Component {
   render() {
     return (
     <div>
-      <Tabs
-        adminStatus = {this.props.adminStatus}
-        authenticated= {this.props.authenticated}
-        value = {this.props.value}
-        handleChange = {this.props.handleChange}
-      />
       <Card className="container" align="center">
         <h2 className="card-heading">Add admin</h2>
         <div className="field-line">

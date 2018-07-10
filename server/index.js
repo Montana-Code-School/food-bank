@@ -4,21 +4,17 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
 const db = process.env.MONGODB_URI || config.dbUri;
-console.log(db);
 require('./model').connect(db);
 
 const PORT = process.env.PORT || 5000;
-console.log(PORT);
 
   const app = express();
-
 
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
   app.use(bodyParser.urlencoded({ extended:false }));
   app.use(bodyParser.json());
-
 
   app.use(passport.initialize());
 

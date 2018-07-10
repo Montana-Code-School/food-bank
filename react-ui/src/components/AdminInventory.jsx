@@ -114,12 +114,6 @@ render() {
     )
     return (
     <div>
-      <Tabs
-        value = {this.props.value}
-        adminStatus = {this.props.adminStatus}
-        authenticated= {this.props.authenticated}
-        handleChange = {this.props.handleChange}
-      />
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>

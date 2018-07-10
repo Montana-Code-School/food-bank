@@ -7,32 +7,7 @@ class InventoryPage extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      secretData: '',
-      user: {}
-    };
     this.onClick = this.onClick.bind(this);
-  }
-
-  componentDidMount() {
-    fetch('/api/dashboard',{
-      method: 'GET',
-      headers: {
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json',
-        Authorization: `bearer ${Auth.getToken()}`
-      }
-    })
-    .then ( ( res )  => {return res.json()})
-    .then (( data ) => {
-      if(data){
-        this.setState({
-          secretData: data.message,
-          user: data.user
-        })
-      }
-    })
   }
 
   onClick() {
@@ -48,21 +23,14 @@ class InventoryPage extends React.Component {
       .then (( data ) => console.log(data));
     }
 
-    submitForm() {
-        console.log(this.add)
-      }
+  render() {
+    const AdminView = () => { return this.props.user && this.props.user.role === "admin" ? (
+      <AdminInventory onClick= {this.onClick}/>
+      ) : (
+      <Inventory/>
+    )}
+    return (AdminView());
 
-render() {
-    const AdminView = () => { return  (
-
-      <div>
-         <Inventory/>
-      </div>
-      )}
-
-  return (
-    AdminView()
-    );
   }
 }
 

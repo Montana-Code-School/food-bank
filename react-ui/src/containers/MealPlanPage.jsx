@@ -84,12 +84,6 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Tabs
-          adminStatus = {this.props.adminStatus}
-          authenticated= {this.props.authenticated}
-          value = {this.props.value}
-          handleChange = {this.props.handleChange}
-        />
         <Paper>
           <Input
           onChange={this.storeSearchTerm}

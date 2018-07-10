@@ -48,44 +48,21 @@ class MealPlanPage extends React.Component {
           image_url: data[i].image_url,
           recipe_id: data[i].recipe_id,
           title: data[i].title,
-          expanded: false
+          expanded: false,
+          ingredients: data[i].ingredients
         }
+
         tempArr.push(obj);
-     }
-     this.setState({
-       plans:tempArr
-     })
+       }
+       this.setState({
+         plans:tempArr
+       })
      })
   }
 
-  // componentDidMount() {
-  //   fetch('/api/recipes/' + 'pasta', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Accept' : 'application/json',
-  //       'Content-Type' : 'application/json',
-  //       Authorization: `bearer ${Auth.getToken()}`
-  //     }
-  //   })
-  //   .then ( ( res )  => {return res.json()})
-  //   .then (( data ) => {
-  //     let tempArr = [];
-  //     for (var i = 0; i < data.length; i++) {
-  //       let obj = {
-  //         image_url: data[i].image_url,
-  //         recipe_id: data[i].recipe_id,
-  //         title: data[i].title,
-  //         expanded: false
-  //       }
-  //       tempArr.push(obj);
-  //    }
-  //    this.setState({
-  //      plans:tempArr
-  //    })
-  //    })
-  // }
-
   render() {
+    console.log("this.state.plans", this.state.plans);
+
     let mealPlans;
     if (this.state.plans.length !== 0) {
       mealPlans = this.state.plans.map((plan, index) =>
@@ -95,6 +72,7 @@ class MealPlanPage extends React.Component {
           title = {plan.title}
           imageUrl = {plan.image_url}
           expanded = {plan.expanded}
+          ingredients = {plan.ingredients}
         />
       )
     } else {
@@ -103,7 +81,7 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Paper style={styles.searchBox} >
+        <Paper>
           <Input
           onChange={this.storeSearchTerm}
           />
@@ -129,8 +107,7 @@ const styles = {
   searchBox: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-
+    justifyContent: 'center'
   }
 };
 

@@ -20,8 +20,8 @@ class ScrollableTabsButtonAuto extends React.Component {
   }
 
   handleChange = (event, value) => {
-     this.setState({ value });
-   };
+    this.setState({ value });
+  };
 
     render() {
       const { classes } = this.props;
@@ -79,7 +79,7 @@ class ScrollableTabsButtonAuto extends React.Component {
 
 const styles = theme => ({
   root: {
-    marginTop: 25, //is this working?
+    marginTop: 25,
     flexGrow: 1,
     width: '100%',
     backgroundColor: theme.palette.background.paper,

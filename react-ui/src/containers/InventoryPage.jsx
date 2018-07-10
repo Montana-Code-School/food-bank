@@ -30,6 +30,7 @@ class InventoryPage extends React.Component {
       <Inventory/>
     )}
     return (AdminView());
+
   }
 }
 

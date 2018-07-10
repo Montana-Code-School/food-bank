@@ -16,8 +16,6 @@ import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
 import AdminPage from './containers/Adminpage.jsx';
 
-// remove tap delay, essential for MaterialUI to work properly
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     Auth.isUserAuthenticated() ? (
@@ -54,7 +52,9 @@ const PropsRoute = ({ component: Component, ...rest }) => (
 )
 
 export default class Main extends Component {
+
   render() {
+    const { value } = this.props;
     return (
       <main>
         <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
@@ -87,3 +87,4 @@ export default class Main extends Component {
     );
   }
 }
+

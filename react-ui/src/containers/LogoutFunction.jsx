@@ -10,6 +10,7 @@ class LogoutFunction extends React.Component {
   }
 
   componentDidMount() {
+    console.log("logging out", this.props);
     Auth.deauthenticateUser();
     console.log(this.props);
     this.props.toggleUser(null);

@@ -112,7 +112,7 @@ render() {
       </tr>
     )
     return (
-
+    <div>
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>
@@ -163,6 +163,7 @@ render() {
          </table>
         </div>
       </Card>
+    </div>
     )
   }
 };

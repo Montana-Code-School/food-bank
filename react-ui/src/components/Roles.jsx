@@ -40,6 +40,7 @@ export default class Roles extends React.Component {
 
   render() {
     return (
+    <div>
       <Card className="container" align="center">
         <h2 className="card-heading">Add admin</h2>
         <div className="field-line">
@@ -63,6 +64,7 @@ export default class Roles extends React.Component {
           />
         </div>
       </Card>
+    </div>
     )
    }
 }

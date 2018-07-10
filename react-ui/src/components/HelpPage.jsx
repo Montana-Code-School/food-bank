@@ -5,29 +5,40 @@ class Help extends React.Component {
   render() {
     return (
       <div style= {styles.mainDiv} >
-        <Card style = {styles.cardOne}>
-          <CardTitle title="Use Our Store" subtitle="Asking for help is something that can be difficult to do,
-              but getting food at our food bank store is free, simple, and confidential. By following the three
-                easy steps below you will be on your way to filling your shopping cart with nutritious, nourishing food."/>
-           <div style = {styles.cardDiv}>
-            <Card style = {styles.innerCards}>
-              <CardTitle title="1" subtitle = "Welcome"/>
-                <CardText>
-                  Asking for help can be difficult to do.
-                </CardText>
+          <Card style = {styles.cardOne}>
+            <CardTitle title="Use Our Store" subtitle="Asking for help is something that can be difficult to do,
+                but getting food at our food bank store is free, simple, and confidential. By following the three
+                  easy steps below you will be on your way to filling your shopping cart with nutritious, nourishing food."/>
+             <div style = {styles.cardDiv}>
+              <Card style = {styles.innerCards}>
+                <CardTitle title="1" subtitle = "Welcome"/>
+                  <CardText>
+                    Asking for help can be difficult to do.
+                  </CardText>
+                   <CardText>
+                    Here at Missoula Food Bank & Community Center, we want you to feel welcome. When you arrive at the store, we will ask you to fill out a simple
+                      survey that will be used for statistical purposes. Your personal information will remain confidential.
+                   </CardText>
+              </Card>
+              <Card style = {styles.innerCards}>
+                <CardTitle title="2" subtitle = "Interview"/>
+                  <CardText>
+                    We are here to help
+                  </CardText>
+                   <CardText>
+                      Once we have entered your survey in our system, a trained volunteer will spend a few moments with you to
+                      explain how the store works and share information about other resources that may be available to you.
+                   </CardText>
+              </Card>
+              <Card style = {styles.innerCards} >
+                <CardTitle title="3" subtitle="Shop & Go!" />
                  <CardText>
-                  Here at Missoula Food Bank & Community Center, we want you to feel welcome. When you arrive at the store, we will ask you to fill out a simple
-                    survey that will be used for statistical purposes. Your personal information will remain confidential.
+                    You're on your way to nourishing food.
                  </CardText>
-            </Card>
-            <Card style = {styles.innerCards}>
-              <CardTitle title="2" subtitle = "Interview"/>
-                <CardText>
-                  We are here to help
-                </CardText>
                  <CardText>
-                    Once we have entered your survey in our system, a trained volunteer will spend a few moments with you to
-                    explain how the store works and share information about other resources that may be available to you.
+                   Based on the number of people in your household, you are able to select food from the choices available that day.
+                    Once you have completed shopping, our volunteer grocery boxers will make sure you received the allotted amount
+                      and will box your groceries for easy transport.
                  </CardText>
             </Card>
             <Card style = {styles.innerCards} >

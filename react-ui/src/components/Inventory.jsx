@@ -36,6 +36,7 @@ class Inventory extends React.Component {
       )
 
     return (
+      <div>
         <Card style = {styles.cardStyle} className="container" align="center">
           <CardTitle title="Food Bank Inventory" subtitle="Here you can see what we have in stock!" />
           <div style = {styles.tableDivStyle}>
@@ -51,6 +52,7 @@ class Inventory extends React.Component {
             </table>
           </div>
         </Card>
+      </div>
     )
   }
 };

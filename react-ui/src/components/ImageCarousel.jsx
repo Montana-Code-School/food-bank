@@ -16,7 +16,7 @@ import fruits6 from '../photos/fruits6.jpg';
 import breads from '../photos/breads.jpg';
 import cheese from '../photos/cheese.jpg';
 
-export default class ImageCarousel extends React.Component {
+export default class ImageCarousel extends React.PureComponent {
   render() {
     return (
       <Carousel

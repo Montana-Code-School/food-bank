@@ -12,7 +12,6 @@ console.log(PORT);
 
   const app = express();
 
-
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
@@ -27,8 +26,8 @@ console.log(PORT);
   passport.use('local-signup', localSignupStrategy);
   passport.use('local-login', localLoginStrategy);
 
-  // const authCheckMiddleware = require('./middleware/auth-check');
-  // app.use('/api', authCheckMiddleware);
+  const authCheckMiddleware = require('./middleware/auth-check');
+  app.use('/api', authCheckMiddleware);
 
   // const adminCheckMiddleware = require('./middleware/admin-check');
   // app.use('/admin', adminCheckMiddleware);

@@ -62,8 +62,9 @@ class MealPlanPage extends React.Component {
   }
 
   render() {
-    console.log("this.state.plans", this.state.plans);
 
+    console.log("this.state.plans", this.state.plans);
+    
     let mealPlans;
     if (this.state.plans.length !== 0) {
       mealPlans = this.state.plans.map((plan, index) =>
@@ -82,12 +83,6 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Tabs
-          adminStatus = {this.props.adminStatus}
-          authenticated= {this.props.authenticated}
-          value = {this.props.value}
-          handleChange = {this.props.handleChange}
-        />
         <Paper>
           <Input
           onChange={this.storeSearchTerm}

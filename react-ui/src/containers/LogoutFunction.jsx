@@ -5,12 +5,19 @@ import Auth from '../modules/Auth';
 
 class LogoutFunction extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     Auth.deauthenticateUser();
+    console.log(this.props);
+    this.props.toggleUser(null);
     this.props.history.push('/');
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <p>Logging out...</p>

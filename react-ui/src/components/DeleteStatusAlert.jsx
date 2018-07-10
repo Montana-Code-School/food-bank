@@ -4,7 +4,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Auth from '../modules/Auth';
 
 class DeleteStatusAlert extends React.Component {
@@ -14,12 +13,14 @@ class DeleteStatusAlert extends React.Component {
 
   handleClickOpen = () => {
     this.setState({ open: true });
-    
+
     let foundEmail = this.props.users.filter((element) => {
       if (element.email === this.props.email) {
         return element
-        }
-      })
+      } else {
+        return false;
+      }
+    })
 
     if (foundEmail.length === 1) {
       let searchUrl='/admin/user-collect/' + foundEmail[0]._id

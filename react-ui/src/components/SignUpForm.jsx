@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, CardText } from 'material-ui/Card';
+import { CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
@@ -21,6 +21,7 @@ const SignUpForm = ({
             errorText={errors.name}
             onChange={onChange}
             value={user.name}
+            autoComplete="name"
           />
         </div>
         <div className="field-line">
@@ -30,6 +31,7 @@ const SignUpForm = ({
             errorText={errors.email}
             onChange={onChange}
             value={user.email}
+            autoComplete="email"
           />
         </div>
         <div className="field-line">
@@ -40,6 +42,7 @@ const SignUpForm = ({
             onChange={onChange}
             errorText={errors.password}
             value={user.password}
+            autoComplete="current-password"
           />
         </div>
         <div className="button-line">
@@ -57,9 +60,3 @@ SignUpForm.propTypes = {
 };
 
 export default SignUpForm;
-
-const styles = {
-  container: {
-    padding: 40
-  }
-}

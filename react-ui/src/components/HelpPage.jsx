@@ -69,7 +69,7 @@ class Help extends React.Component {
           </CardText>
         </Card>
         <Card style = {styles.cardThree}>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2727.5536834431396!2d-114.02528908397404!3d46.87215497914287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535dcdd39384293d%3A0xc513f6364b83d221!2sMissoula+Food+Bank+%26+Community+Center!5e0!3m2!1sen!2sus!4v1530558855133"
+          <iframe title="google map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2727.5536834431396!2d-114.02528908397404!3d46.87215497914287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535dcdd39384293d%3A0xc513f6364b83d221!2sMissoula+Food+Bank+%26+Community+Center!5e0!3m2!1sen!2sus!4v1530558855133"
               width="99%" height= "450px" frameborder="0" allowfullscreen>
           </iframe>
         </Card>

@@ -41,7 +41,6 @@ class Help extends React.Component {
                       and will box your groceries for easy transport.
                  </CardText>=
             </Card>
-
           </div>
         </Card>
         <Card style = {styles.cardTwo}>

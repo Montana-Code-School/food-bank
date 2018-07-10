@@ -52,6 +52,7 @@ class MealPlanPage extends React.Component {
           expanded: false,
           ingredients: data[i].ingredients
         }
+
         tempArr.push(obj);
        }
        this.setState({
@@ -61,7 +62,9 @@ class MealPlanPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.plans)
+
+    console.log("this.state.plans", this.state.plans);
+    
     let mealPlans;
     if (this.state.plans.length !== 0) {
       mealPlans = this.state.plans.map((plan, index) =>
@@ -71,6 +74,7 @@ class MealPlanPage extends React.Component {
           title = {plan.title}
           imageUrl = {plan.image_url}
           expanded = {plan.expanded}
+          ingredients = {plan.ingredients}
         />
       )
     } else {

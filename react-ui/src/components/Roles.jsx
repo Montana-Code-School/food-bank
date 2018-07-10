@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import AdminStatusAlert from './AdminStatusAlert.jsx';
 import DeleteStatusAlert from './DeleteStatusAlert.jsx';
+import Tabs from '../components/Tabs';
 
 export default class Roles extends React.Component {
   constructor(props) {
@@ -41,6 +42,13 @@ export default class Roles extends React.Component {
 
   render() {
     return (
+    <div>
+      <Tabs
+        adminStatus = {this.props.adminStatus}
+        authenticated= {this.props.authenticated}
+        value = {this.props.value}
+        handleChange = {this.props.handleChange}
+      />
       <Card className="container" align="center">
         <h2 className="card-heading">Add admin</h2>
         <div className="field-line">
@@ -64,6 +72,7 @@ export default class Roles extends React.Component {
           />
         </div>
       </Card>
+    </div>
     )
    }
 }

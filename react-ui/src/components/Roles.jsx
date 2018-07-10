@@ -4,7 +4,6 @@ import { Card } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import AdminStatusAlert from './AdminStatusAlert.jsx';
 import DeleteStatusAlert from './DeleteStatusAlert.jsx';
-import Tabs from '../components/Tabs';
 
 export default class Roles extends React.Component {
   constructor(props) {
@@ -42,8 +41,8 @@ export default class Roles extends React.Component {
   render() {
     return (
     <div>
-      <Card className="container" align="center">
-        <h2 className="card-heading">Add admin</h2>
+      <Card style = {{padding: 5}} className="container" align="center">
+        <h2  className="card-heading">Add admin</h2>
         <div className="field-line">
           <TextField
             floatingLabelText="Enter the users email"
@@ -72,7 +71,10 @@ export default class Roles extends React.Component {
 
 const styles = {
   buttonDiv: {
-    flex:1,
-    flexDirection: 'row'
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 5,
+    padding: 5
   }
 }

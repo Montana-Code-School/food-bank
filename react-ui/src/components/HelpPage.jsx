@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
-import Tabs from '../components/Tabs';
 
 class Help extends React.Component {
   render() {
@@ -49,29 +48,20 @@ class Help extends React.Component {
           <CardText >
               <p>1720 Wyoming Street
               Missoula, MT 59801</p>
-
               <p>406.549.0543</p>
-
               <p><strong>Our Food Distribution Hours: </strong></p>
-
               <p>Monday, Tuesday & Thursday 10am – 7pm</p>
-
               <p>Wednesday & Friday 10am – 1pm</p>
-
               <p>Closed Saturday & Sunday</p>
-
               <p><strong>Our Donation Drop-Off Hours: </strong></p>
-
               <p>Monday, Tuesday & Thursday 8am – 7pm</p>
-
               <p>Wednesday & Friday 8am – 3pm</p>
-
               <p>Closed Saturday & Sunday</p>
           </CardText>
         </Card>
         <Card style = {styles.cardThree}>
           <iframe title="google map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2727.5536834431396!2d-114.02528908397404!3d46.87215497914287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x535dcdd39384293d%3A0xc513f6364b83d221!2sMissoula+Food+Bank+%26+Community+Center!5e0!3m2!1sen!2sus!4v1530558855133"
-              width="99%" height= "450px" frameborder="0" allowfullscreen>
+              width="100%" height= "300px" frameborder="0" allowfullscreen>
           </iframe>
         </Card>
       </div>

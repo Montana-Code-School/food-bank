@@ -50,7 +50,7 @@ class DeleteStatusAlert extends React.Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.handleClickOpen}>Delete admin</Button>
+        <Button variant="contained" color="secondary" style = {{margin: 3}} onClick={this.handleClickOpen}>Delete admin</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -63,7 +63,7 @@ class DeleteStatusAlert extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="secondary" autoFocus>
+            <Button variant="contained" color="secondary" style = {{margin: 3}} onClick={this.handleClose} color="secondary" autoFocus>
               Okay!
             </Button>
           </DialogActions>

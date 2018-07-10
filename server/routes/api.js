@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const User = require('mongoose').model('User');
 const axios = require('axios');
 const Item = require('mongoose').model('Item');
+const Suggestion = require('mongoose').model('Suggestion');
 
 
 router.get('/dashboard', (req, res) => {
@@ -49,8 +50,8 @@ const getRecipesIngreds = async (req, res) => {
    let apiKey = '7e67a4fb022eb04b5c0f2e087119c728';
    let searchUrl = 'http://food2fork.com/api/search?key=';
    let searchField = '&q=' + foodItem;
+   let count = '&count=4';
 
-   let count = '&count=1';
 
   const recipes = await axios.get(searchUrl + apiKey + searchField + count)
   .then( (response) => {
@@ -82,6 +83,19 @@ router.post('/dashboard', (req, res) => {
       });
     });
   });
+});
+
+router.post('/suggestion', (req, res) => {
+  let suggestion = new Suggestion();
+    suggestion.body = req.body.suggestion
+    
+    suggestion.save((err) => {
+      if (err)
+        res.send(err);
+      res.json({
+        message: "Suggestion Created!"
+      });
+    });
 });
 
 

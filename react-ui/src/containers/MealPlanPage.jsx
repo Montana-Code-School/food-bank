@@ -4,7 +4,6 @@ import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Tabs from '../components/Tabs';
 
 class MealPlanPage extends React.Component {
 
@@ -63,6 +62,38 @@ class MealPlanPage extends React.Component {
      })
   }
 
+  componentWillMount() {
+    fetch('/api/recipes/' + 'pasta', {
+      method: 'GET',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+        Authorization: `bearer ${Auth.getToken()}`
+      }
+    })
+    .then ( ( res )  => {return res.json()})
+    .then (( data ) => {
+      let tempArr = [];
+      for (var i = 0; i < data.length; i++) {
+        let obj = {
+          image_url: data[i].image_url,
+          recipe_id: data[i].recipe_id,
+          title: data[i].title,
+          expanded: false,
+          ingredients: data[i].ingredients,
+          publisher: data[i].publisher,
+          source_url: data[i].source_url
+        }
+
+        tempArr.push(obj);
+       }
+       this.setState({
+         plans:tempArr
+       })
+     })
+
+  }
+
   render() {
     let mealPlans;
     if (this.state.plans.length !== 0) {
@@ -84,18 +115,19 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Paper>
+        <div style = {styles.searchContainer}>
           <Input
           onChange={this.storeSearchTerm}
+          style= {styles.searchBox}
           />
-          <Button variant="outlined" color="primary" onClick={this.findRecipe}>
+          <Button variant="outlined" color="primary" style= {styles.searchBox} onClick={this.findRecipe}>
             Search
           </Button>
-        </Paper>
-        <div style={styles.recipesContainer}>
-          {mealPlans}
         </div>
+      <div style={styles.recipesContainer}>
+          {mealPlans}
       </div>
+    </div>
     );
   }
 }
@@ -103,15 +135,18 @@ class MealPlanPage extends React.Component {
 const styles = {
   recipesContainer: {
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-evenly',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: 10
   },
-  searchBox: {
+  searchBox:{
+    backgroundColor: '#F5F5F5'
+  },
+  searchContainer: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
 };
 
 export default MealPlanPage;

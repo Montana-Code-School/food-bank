@@ -28,11 +28,6 @@ export default class App extends Component {
     this.toggleUser = this.toggleUser.bind(this);
   }
 
-  toggleAuthenticateStatus() {
-    // check authenticated status and toggle state based on that
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
-  }
-
   toggleUser(newUser) {
     if(!newUser) {
       this.setState({ user: null })
@@ -70,6 +65,11 @@ export default class App extends Component {
     this.toggleAuthenticateStatus()
   }
 
+  toggleAuthenticateStatus() {
+    // check authenticated status and toggle state based on that
+    this.setState({ authenticated: Auth.isUserAuthenticated() })
+  }
+
   render() {
     return (
     <div>
@@ -89,6 +89,7 @@ export default class App extends Component {
                errors={this.state.errors}
                userFormObj={this.state.userFormObj}
                changeUser={this.changeUser}
+               user = {this.state.user}
              />
           </div>
         </Router>

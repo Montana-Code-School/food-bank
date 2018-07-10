@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Carousel from '../components/ImageCarousel.jsx';
-import Button from '@material-ui/core/Button'
-import {Link} from 'react-router-dom';
 
 const Dashboard = ({ secretData, user }) => (
   <Card className="container" align="center" style = {styles.container}>

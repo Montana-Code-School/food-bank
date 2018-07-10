@@ -49,7 +49,7 @@ class AdminStatusAlert extends React.Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.handleClickOpen}>Make admin</Button>
+        <Button variant="contained" style = {{margin: 3}} color="primary" onClick={this.handleClickOpen}>Make admin</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -62,7 +62,7 @@ class AdminStatusAlert extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
+            <Button variant="contained" style = {{margin: 3}} color="primary" onClick={this.handleClose} color="primary" autoFocus>
               Okay!
             </Button>
           </DialogActions>

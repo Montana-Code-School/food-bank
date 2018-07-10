@@ -6,8 +6,6 @@ import Main from './Main';
 import Auth from './modules/Auth';
 import Tabs from './components/Tabs';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Auth from './modules/Auth';
-
 
 // remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
@@ -28,11 +26,6 @@ export default class App extends Component {
       user: null
     };
     this.toggleUser = this.toggleUser.bind(this);
-  }
-
-  toggleAuthenticateStatus() {
-    // check authenticated status and toggle state based on that
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
   }
 
   toggleUser(newUser) {
@@ -72,61 +65,6 @@ export default class App extends Component {
     this.toggleAuthenticateStatus()
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      authenticated: false,
-      adminStatus: false,
-      user: {}
-    };
-    this.toggleAuthenticateStatus = this.toggleAuthenticateStatus.bind(this);
-  }
-
-  componentDidMount() {
-    this.toggleAuthenticateStatus() // looking for local token and returns true if it's there
-
-    fetch('/api/dashboard', {
-      METHOD : "GET",
-      headers: {
-        'Accept' : 'application/json',
-        'Content-Type' : 'application/json',
-        Authorization: `bearer ${Auth.getToken()}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        let currState = this.state;
-        currState.user = json.user;
-        if (json.user.role === 'admin') {
-          currState.adminStatus = true;
-        }
-        this.setState(currState);
-      }).catch(e => {
-        console.log(`API call failed: ${e}`);
-      })
-      console.log("after fetch on app", this.state);
-  }
-
-  toggleAuthenticateStatus() {
-    // check authenticated status and toggle state based on that
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      authenticated: false,
-      adminStatus: false,
-      user: {}
-    };
-    this.toggleAuthenticateStatus = this.toggleAuthenticateStatus.bind(this);
-  }
-
   componentDidMount() {
     this.toggleAuthenticateStatus() // looking for local token and returns true if it's there
 
@@ -163,7 +101,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log("app adminStatus", this.state.adminStatus);
     return (
     <div>
       <MuiThemeProvider muiTheme={getMuiTheme()}>
@@ -181,6 +118,7 @@ export default class App extends Component {
                errors={this.state.errors}
                userFormObj={this.state.userFormObj}
                changeUser={this.changeUser}
+               user = {this.state.user}
              />
           </div>
         </Router>

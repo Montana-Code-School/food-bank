@@ -12,8 +12,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Restaurant from '@material-ui/icons/Restaurant';
 
 class MealPlan extends React.Component {
@@ -30,7 +28,7 @@ class MealPlan extends React.Component {
         <Card className={classes.card}>
           <CardHeader
             avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
+              <Avatar aria-label="eat" className={classes.avatar}>
                 eat
               </Avatar>
             }
@@ -81,6 +79,9 @@ class MealPlan extends React.Component {
       const styles = theme => ({
         card: {
           maxWidth: 400,
+          width: 400,
+          marginBottom: 5,
+          marginTop: 5
         },
         media: {
           height: 0,
@@ -102,6 +103,7 @@ class MealPlan extends React.Component {
         avatar: {
           backgroundColor: red[500],
         },
+
       });
 
   export default withStyles(styles)(MealPlan);

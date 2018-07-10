@@ -77,12 +77,6 @@ class SignUpPage extends React.Component {
         <Card className="container" align="center" style = {styles.introCard}>
           <CardTitle title="What's at the food bank?" />
           <CardText><strong>The one stop shop for meal planning with your local food bank's ingredients</strong></CardText>
-          <div style = {styles.buttons} >
-            <Button component = {Link} color="secondary" to="/inventory">Inventory</Button>
-            <Button component = {Link} color="secondary" to="/mealplan">Recipes</Button>
-            <Button component = {Link} color="secondary" to="/helppage">Help Page</Button>
-            <Button component = {Link} color="secondary" to="/suggestions">Suggestions</Button>
-          </div>
           <Carousel />
         </Card>
         <Card style = {styles.signUpCard}>

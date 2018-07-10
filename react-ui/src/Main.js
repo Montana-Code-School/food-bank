@@ -53,7 +53,6 @@ const PropsRoute = ({ component: Component, ...rest }) => (
 export default class Main extends Component {
 
   render() {
-    const { value } = this.props;
     return (
       <main>
         <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
@@ -78,7 +77,7 @@ export default class Main extends Component {
         <Route path="/logout"
           render={(props) =>
             <LogoutFunction
-              {...props} 
+              {...props}
               toggleUser={this.props.toggleUser}
           />}
         />
@@ -86,4 +85,3 @@ export default class Main extends Component {
     );
   }
 }
-

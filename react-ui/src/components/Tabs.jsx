@@ -55,11 +55,6 @@ class ScrollableTabsButtonAuto extends React.Component {
                 <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
                 <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
                 {
-                  this.props.user && this.props.user.role === 'admin'
-                  ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/>
-                  : ""
-                }
-                {
                   Auth.isUserAuthenticated()
                   ? <Tab label="Log Out" component={Link} to="/logout"/>
                   : <Tab label="Log In" component={Link} to="/login"/>

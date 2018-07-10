@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const InventorySchema = new mongoose.Schema({
    id:  Number,
-
 });
 
 

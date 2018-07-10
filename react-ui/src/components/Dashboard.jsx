@@ -14,12 +14,6 @@ const Dashboard = ({ secretData, user }) => (
         Welcome <strong>{user.name}</strong>!
       <br />
     </CardText>
-    <div style = {styles.buttons} >
-      <Button component = {Link} color="secondary" to="/inventory">Inventory</Button>
-      <Button component = {Link} color="secondary" to="/mealplan">Recipes</Button>
-      <Button component = {Link} color="secondary" to="/helppage">Help Page</Button>
-      <Button component = {Link} color="secondary" to="/suggestions">Suggestions</Button>
-    </div>
     <Carousel />
   </Card>
 );

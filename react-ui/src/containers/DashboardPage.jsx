@@ -2,6 +2,7 @@ import React from 'react';
 import Auth from '../modules/Auth';
 import Dashboard from '../components/Dashboard.jsx';
 import SignUpPage from '../containers/SignUpPage';
+import Tabs from '../components/Tabs';
 import { Card, CardText } from 'material-ui/Card';
 
 class DashboardPage extends React.Component {
@@ -36,7 +37,15 @@ class DashboardPage extends React.Component {
 
   render() {
     return (
-      <Dashboard secretData={this.state.secretData} user={this.state.user} />);
+      <div>
+        <Tabs
+          adminStatus = {this.props.adminStatus}
+          authenticated= {this.props.authenticated}
+          value = {this.props.value}
+        />
+        <Dashboard secretData={this.state.secretData} user={this.state.user} />
+      </div>
+    );
   }
 }
 

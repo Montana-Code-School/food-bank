@@ -4,6 +4,7 @@ import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Tabs from '../components/Tabs';
 
 class MealPlanPage extends React.Component {
 
@@ -51,39 +52,12 @@ class MealPlanPage extends React.Component {
           expanded: false
         }
         tempArr.push(obj);
-     }
-     this.setState({
-       plans:tempArr
-     })
+       }
+       this.setState({
+         plans:tempArr
+       })
      })
   }
-
-  // componentDidMount() {
-  //   fetch('/api/recipes/' + 'pasta', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Accept' : 'application/json',
-  //       'Content-Type' : 'application/json',
-  //       Authorization: `bearer ${Auth.getToken()}`
-  //     }
-  //   })
-  //   .then ( ( res )  => {return res.json()})
-  //   .then (( data ) => {
-  //     let tempArr = [];
-  //     for (var i = 0; i < data.length; i++) {
-  //       let obj = {
-  //         image_url: data[i].image_url,
-  //         recipe_id: data[i].recipe_id,
-  //         title: data[i].title,
-  //         expanded: false
-  //       }
-  //       tempArr.push(obj);
-  //    }
-  //    this.setState({
-  //      plans:tempArr
-  //    })
-  //    })
-  // }
 
   render() {
     let mealPlans;
@@ -103,7 +77,13 @@ class MealPlanPage extends React.Component {
 
     return (
       <div>
-        <Paper style={styles.searchBox} >
+        <Tabs
+          adminStatus = {this.props.adminStatus}
+          authenticated= {this.props.authenticated}
+          value = {this.props.value}
+          handleChange = {this.props.handleChange}
+        />
+        <Paper>
           <Input
           onChange={this.storeSearchTerm}
           />
@@ -129,8 +109,7 @@ const styles = {
   searchBox: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-
+    justifyContent: 'center'
   }
 };
 

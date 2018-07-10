@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -10,7 +9,7 @@ const LoginForm = ({
   onChange,
   errors,
   successMessage,
-  user,
+  userFormObj,
   toggleAuthenticateStatus
 }) => (
   <Card className="container" align="center">
@@ -24,7 +23,8 @@ const LoginForm = ({
           name="email"
           errorText={errors.email}
           onChange={onChange}
-          value={user.email}
+          value={userFormObj.email}
+          autoComplete="email"
         />
       </div>
       <div className="field-line">
@@ -34,7 +34,8 @@ const LoginForm = ({
           name="password"
           onChange={onChange}
           errorText={errors.password}
-          value={user.password}
+          value={userFormObj.password}
+          autoComplete="current-password"
         />
       </div>
       <div className="button-line">
@@ -45,12 +46,12 @@ const LoginForm = ({
   </Card>
 );
 
-LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  successMessage: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
-};
+// LoginForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   onChange: PropTypes.func.isRequired,
+//   errors: PropTypes.object.isRequired,
+//   successMessage: PropTypes.string.isRequired,
+//   user: PropTypes.object.isRequired
+// };
 
 export default LoginForm;

@@ -1,6 +1,6 @@
-import React from 'react';
-import {Carousel} from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css'
+import React, { Component } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import veggies1 from '../photos/veggies1.jpg';
 import veggies2 from '../photos/veggies2.jpg';
 import veggies3 from '../photos/veggies3.jpg';
@@ -16,7 +16,7 @@ import fruits6 from '../photos/fruits6.jpg';
 import breads from '../photos/breads.jpg';
 import cheese from '../photos/cheese.jpg';
 
-export default class ImageCarousel extends React.Component {
+export default class ImageCarousel extends Component {
   render() {
     return (
       <Carousel
@@ -25,51 +25,51 @@ export default class ImageCarousel extends React.Component {
         interval = {2000}
         showThumbs = {false}
         showIndicators = {false}
-        width = {500}
+        width = {'500px'}
         dynamicHeight = {true}
         stopOnHover = {true}
       >
          <div>
-           <img src={veggies1} />
+           <img src={veggies1} alt="Vegetables" />
          </div>
          <div>
-           <img src={breads}  />
+           <img src={breads} alt="Bread" />
          </div>
          <div>
-           <img src={cheese}  />
+           <img src={cheese} alt="Cheese" />
          </div>
          <div>
-           <img src={fruits1}  />
+           <img src={fruits1} alt="Fruit" />
          </div>
          <div>
-           <img src={fruits2} />
+           <img src={fruits2} alt="Fruits"/>
          </div>
          <div>
-           <img src={veggies2} />
+           <img src={veggies2} alt="Vegetables" />
          </div>
          <div>
-           <img src={fruits3} />
+           <img src={fruits3} alt="Fruit" />
          </div>
          <div>
-           <img src={veggies3}/>
+           <img src={veggies3} alt="Vegetables" />
          </div>
          <div>
-           <img src={fruits4} />
+           <img src={fruits4} alt="Fruits" />
          </div>
          <div>
-           <img src={veggies4} />
+           <img src={veggies4} alt="Vegetables" />
          </div>
          <div>
-           <img src={fruits5}/>
+           <img src={fruits5} alt="Fruit" />
          </div>
          <div>
-           <img src={veggies5} />
+           <img src={veggies5} alt="Vegetables" />
          </div>
          <div>
-           <img src={fruits6}/>
+           <img src={fruits6} alt="Fruit" />
          </div>
          <div>
-           <img src={veggies6} />
+           <img src={veggies6} alt="Vegetables" />
          </div>
       </Carousel>
     );

@@ -14,11 +14,7 @@ import Auth from './modules/Auth';
 import MealPlanPage from './containers/MealPlanPage.jsx';
 import Suggestions from './components/Suggestions.jsx';
 import HelpPage from './components/HelpPage.jsx';
-import Tabs from './components/Tabs';
 import AdminPage from './containers/Adminpage.jsx';
-
-// remove tap delay, essential for MaterialUI to work properly
-
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -27,7 +23,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     ) : (
       <Redirect to={{
         pathname: '/',
-        state: { from: props.location }
+        state: {
+          from: props.location
+
+         }
       }}/>
     )
   )}/>
@@ -52,53 +51,40 @@ const PropsRoute = ({ component: Component, ...rest }) => (
   )}/>
 )
 
-class Main extends Component {
+export default class Main extends Component {
+
   render() {
     const { value } = this.props;
     return (
-      <div>
-        <Tabs />
-        <PropsRoute
-          exact path="/"
-          component={SignUpPage}
-          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()}
-        />
-        <PrivateRoute path="/dashboard"
-          component={DashboardPage}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/admin-settings"
-          component={AdminPage}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/inventory"
-          component={InventoryPage}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/mealplan"
-          component={MealPlanPage}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/suggestions"
-          component={Suggestions}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/helppage"
-          component={HelpPage}
-          adminStatus = {this.props.adminStatus}
-        />
-        <PrivateRoute path="/adinventory"
-          component={AdInventory}
-          adminStatus = {this.props.adminStatus}
-        />
+      <main>
+        <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
+        <PrivateRoute path="/dashboard" component={DashboardPage}/>
+        <PrivateRoute path="/admin-settings" component={AdminPage}/>
+        <PrivateRoute path="/inventory" component={InventoryPage} user={this.props.user}/>
+        <PrivateRoute path="/mealplan" component={MealPlanPage}/>
+        <PrivateRoute path="/suggestions" component={Suggestions}/>
+        <PrivateRoute path="/helppage" component={HelpPage}/>
+        <PrivateRoute path="/adinventory" component={AdInventory}/>
+        <PrivateRoute path="/admealplan" component={AdMealPlan}/>
         <LoggedOutRoute path="/login"
           component={LoginPage}
-          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus}
+          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()}
+          toggleUser={this.props.toggleUser}
+          errors={this.props.errors}
+          userFormObj={this.props.userFormObj}
+          changeUser={this.props.changeUser}
+          loginUser={this.props.loginUser}
         />
-        <Route path="/logout" component={LogoutFunction}/>
-      </div>
+        <LoggedOutRoute path="/signup" component={SignUpPage}/>
+        <Route path="/logout"
+          render={(props) =>
+            <LogoutFunction
+              {...props} 
+              toggleUser={this.props.toggleUser}
+          />}
+        />
+      </main>
     );
   }
 }
 
-export default Main;

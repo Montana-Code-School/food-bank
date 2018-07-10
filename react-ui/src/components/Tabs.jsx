@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Auth from '../modules/Auth';
 import {Link} from 'react-router-dom';
 
 class ScrollableTabsButtonAuto extends React.Component {
@@ -13,7 +14,6 @@ class ScrollableTabsButtonAuto extends React.Component {
     this.state = {
       value: 0,
       user:{},
-      adminStatus: false,
       role: ''
     };
     this.handleChange = this.handleChange.bind(this)
@@ -23,30 +23,53 @@ class ScrollableTabsButtonAuto extends React.Component {
     this.setState({ value });
   };
 
-  render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-    return (
-      <div className = {classes.root} style = {styles.root}>
-        <AppBar position = "static" color="default">
-          <Tabs
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            scrollable
-            scrollButtons="off"
-          >
-              <Tab style = {styles.tabs} label="Home" component = {Link} to= {this.props.authenticated ? "/dashboard" : "/"}/>
-              <Tab style = {styles.tabs} label="Inventory" component = {Link} to="/inventory"/>
-              <Tab style = {styles.tabs} label="Meal Plan" component = {Link} to="/mealplan"/>}
-              <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
-              <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
-              {this.props.adminStatus ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/> : "" }
-              <Tab label={this.props.authenticated ? "Log Out" : "Log In"} component={Link} to={this.props.authenticated ? "/logout" : "/login"}/>
-          </Tabs>
-        </AppBar>
-      </div>
-    );
+    render() {
+      const { classes } = this.props;
+      const { value } = this.state;
+      return (
+        <nav className = {classes.root} style = {styles.root}>
+          <AppBar position = "static" color="default">
+            <Tabs
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="primary"
+              scrollable
+              scrollButtons="off"
+            >
+                {
+                  Auth.isUserAuthenticated()
+                  ? <Tab style = {styles.tabs} label="Dashboard" component = {Link} to="/dashboard"/>
+                  : <Tab style = {styles.tabs} label="Home" component = {Link} to="/"/>
+                }
+                {
+                  this.props.user && this.props.user.role === 'admin'
+                  ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/>
+                  : ""
+                }
+                <Tab style = {styles.tabs}
+                     user={this.props.user}
+                     label="Inventory"
+                     component = {Link}
+                     to="/inventory"
+                />
+                <Tab style = {styles.tabs} label="Meal Plan" component = {Link} to="/mealplan"/>}
+                <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
+                <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>
+                {
+                  this.props.user && this.props.user.role === 'admin'
+                  ? <Tab style = {styles.tabs} label= 'Admin Settings' component={Link} to="/admin-settings"/>
+                  : ""
+                }
+                {
+                  Auth.isUserAuthenticated()
+                  ? <Tab label="Log Out" component={Link} to="/logout"/>
+                  : <Tab label="Log In" component={Link} to="/login"/>
+                }
+
+            </Tabs>
+          </AppBar>
+        </nav>
+      );
     }
   }
 

@@ -1,94 +1,83 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
 import LoginForm from '../components/LoginForm.jsx';
 
-export default class LoginPage extends React.Component {
-
-  /**
-   * Class constructor.
-   */
-  constructor(props, context) {
-    super(props, context);
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-
-    // set the initial component state
+export default class LoginPage extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      message: null,
+      fetching: true,
       errors: {},
-      successMessage,
-      user: {
+      userFormObj: {
         email: '',
         password: ''
       }
     };
-
-    this.processForm = this.processForm.bind(this);
+    this.loginUser = this.loginUser.bind(this);
     this.changeUser = this.changeUser.bind(this);
   }
 
   /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
+   * @param {object} event
    */
-  processForm(event) {
-    // prevent default action. in this case, action is the form submission event
+  loginUser(event) {
     event.preventDefault();
+    const data = {
+      email: this.state.userFormObj.email,
+      password: this.state.userFormObj.password
+    }
 
-    // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
-
-    //create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-
-      if (xhr.status === 200) {
+    fetch('/auth/login', {
+      method: 'POST',
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then ( res => res.json() )
+    .then ( ( data ) => {
+      console.log("hello");
+      if(data.success) {
         this.setState({
           errors: {}
         });
-      Auth.authenticateUser(xhr.response.token);
-      this.props.toggleAuthenticateStatus()
-      this.props.history.push('/dashboard');
+
+        Auth.authenticateUser(data.token);
+        this.props.toggleAuthenticateStatus()
+        this.props.toggleUser(true)
+        this.props.history.push('/dashboard')
       } else {
-          const errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.summary = xhr.response.message;
+        const errors = data.errors ?  data.errors : {};
+        errors.summary = data.message;
 
         this.setState({
           errors
         });
       }
-    });
-    xhr.send(formData);
+    })
    }
 
-  changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
+   changeUser(event) {
+     const field = event.target.name;
+     const userFormObj = this.state.userFormObj;
+     userFormObj[field] = event.target.value;
 
-    this.setState({
-      user
-    });
-  }
+     this.setState({
+       userFormObj
+     });
+   }
 
   render() {
     return (
       <LoginForm
-        onSubmit={this.processForm}
+        onSubmit={this.loginUser}
         onChange={this.changeUser}
-        errors={this.state.errors}
-        successMessage={this.state.successMessage}
-        user={this.state.user}
+        errors={this.props.errors}
+        successMessage={this.props.successMessage}
+        userFormObj={this.state.userFormObj}
       />
     );
   }

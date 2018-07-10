@@ -14,24 +14,25 @@ import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Restaurant from '@material-ui/icons/Restaurant';
 
 class MealPlan extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.ingredients);
+    let ingredients = this.props.ingredients
+    const ingredsArr = ingredients.map((element) => {
+      return <li>{element}</li>
+    })
+
     return (
       <div>
         <Card className={classes.card}>
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                yum
+                eat
               </Avatar>
-            }
-            action={
-              <IconButton>
-              </IconButton>
             }
             title={this.props.title}
           />
@@ -39,24 +40,16 @@ class MealPlan extends React.Component {
             className={classes.media}
             image={this.props.imageUrl}
           />
-          <CardContent>
-            <Typography component="p">
-              //not paella stuff
-            </Typography>
-          </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
             <IconButton
               className={classnames(classes.expand, {
                 [classes.expandOpen]: this.props.expanded,
               })}
               onClick={() => {this.props.handleExpandClick(this.props.index)}}
               aria-expanded={this.props.expanded}
-              aria-label="Show more"
+              aria-label="Click here to access ingredients"
             >
-            <ExpandMoreIcon />
+            <Restaurant />
             </IconButton>
           </CardActions>
           <Collapse in={this.props.expanded} timeout="auto" unmountOnExit>
@@ -65,13 +58,14 @@ class MealPlan extends React.Component {
                 Ingredients:
               </Typography>
               <Typography paragraph>
-              {this.props.ingredients}
+              <ul>{ingredsArr}</ul>
               </Typography>
               <Typography paragraph>
                 Directions:
               </Typography>
               <Typography paragraph>
-                View on --put blog name here
+                <a href={this.props.source_url} alt={this.props.title}
+                >View on {this.props.publisher}</a>
               </Typography>
             </CardContent>
           </Collapse>

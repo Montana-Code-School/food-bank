@@ -53,8 +53,11 @@ class InventoryPage extends React.Component {
       }
 
 render() {
-    const AdminView = () => { return  (
-
+    const AdminView = () => { return this.state.user.role === "admin" ? (
+      <div>
+         <AdminInventory onClick= {this.onClick}/>
+      </div>
+        ) : (
       <div>
          <Inventory/>
       </div>

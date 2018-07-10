@@ -37,7 +37,7 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollButtons="off"
           >
               <Tab style = {styles.tabs} label="Home" component = {Link} to= {this.props.authenticated ? "/dashboard" : "/"}/>
-              <Tab style = {styles.tabs} label="Inventory" component = {Link} to="/inventory"/>
+              <Tab style = {styles.tabs} label="AdInventory" component = {Link} to="/inventory"/>
               <Tab style = {styles.tabs} label="Meal Plan" component = {Link} to="/mealplan"/>}
               <Tab style = {styles.tabs} label="Suggestions" component = {Link} to="/suggestions"/>
               <Tab style = {styles.tabs} label="Help Page" component = {Link} to="/helppage"/>

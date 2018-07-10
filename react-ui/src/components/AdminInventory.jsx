@@ -12,7 +12,7 @@ class AdInventory extends React.Component {
     this.state = {
       items: [],
       foodCategory: '',
-      foodCategories: ['Meat', 'Fruit', 'Vegetable', 'Canned'],
+      foodCategories: ['Protein', 'Fruit', 'Vegetable', 'Canned', 'Grains', 'Oils','Other'],
       name: ''
     }
 
@@ -114,12 +114,6 @@ render() {
     )
     return (
     <div>
-      <Tabs
-        value = {this.props.value}
-        adminStatus = {this.props.adminStatus}
-        authenticated= {this.props.authenticated}
-        handleChange = {this.props.handleChange}
-      />
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your Inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>
@@ -200,12 +194,13 @@ const styles= {
   },
   inputDiv: {
     flex:1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width:'100%'
   },
   inputStyle:{
-    margin: 10
+    margin: 10,
   },
   titleStyle: {
     marginBottom:-30
-  }
+  },
 }

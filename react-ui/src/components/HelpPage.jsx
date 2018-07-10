@@ -6,12 +6,6 @@ class Help extends React.Component {
   render() {
     return (
       <div style= {styles.mainDiv} >
-        <Tabs
-          adminStatus = {this.props.adminStatus}
-          authenticated= {this.props.authenticated}
-          value = {this.props.value}
-          handleChange = {this.props.handleChange}
-        />
           <Card style = {styles.cardOne}>
             <CardTitle title="Use Our Store" subtitle="Asking for help is something that can be difficult to do,
                 but getting food at our food bank store is free, simple, and confidential. By following the three

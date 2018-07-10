@@ -22,6 +22,7 @@ class Selector extends React.Component {
               name: 'foodCategory',
               id: 'foodCategory-simple'
             }}
+            autoWidth = {true}
           >
           <MenuItem value="">
               <em>None</em>

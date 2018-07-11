@@ -8,10 +8,9 @@ addons:
 before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 cache:
-  yarn: true
   directories:
     - node_modules
 install:
-  - yarn install
+  - npm install
 script:
-  - yarn test
+  - npm test

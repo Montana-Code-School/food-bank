@@ -62,7 +62,7 @@ class AdminStatusAlert extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="contained" style = {{margin: 3}} color="primary" onClick={this.handleClose} color="primary" autoFocus>
+            <Button variant="contained" style = {{margin: 3}} color="primary" onClick={this.handleClose} autoFocus>
               Okay!
             </Button>
           </DialogActions>

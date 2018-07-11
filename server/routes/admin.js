@@ -5,11 +5,9 @@ const User = require('mongoose').model('User');
 const Item = require('mongoose').model('Item');
 const bodyParser = require('body-parser');
 
-
 //GET
 router.get('/dashboard', (req, res) => {
   // Get users info when logging in
-  console.log("You're authorized as an admin to see this secret message.");
   res.set('Content-Type', 'application/json');
   res.status(200).json({
     // user values passed through from auth middleware
@@ -20,7 +18,6 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/user-collect', (req, res) => {
 //Gets users information
-  console.log("You're authorized as an admin to see this secret message.");
   res.set('Content-Type', 'application/json');
   User.find((err, users) => {
     if(err)

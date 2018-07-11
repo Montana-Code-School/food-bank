@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardTitle} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import SuggestionAlert from './SuggestionAlert.jsx'
 import Auth from '../modules/Auth';
 

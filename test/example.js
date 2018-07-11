@@ -3,11 +3,17 @@ const faker = require('faker');
 
 const newPerson = faker.helpers.createCard();
 const password = '12345678';
+let url = 'http://localhost:3000';
+let opts = {};
+if(true) {
+   url = process.env.PROD_URL
+   opts = {headless:true, slowMo:100}
+}
 
 (async () => {
-  const browser = await puppeteer.launch({headless:false, slowMo:100});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const url = process.env.PROD_URL || 'http://localhost:3000';
+
   await page.goto(url);
 
   await page.screenshot({path: 'test/screenshots/initialSignUpPage.png'});

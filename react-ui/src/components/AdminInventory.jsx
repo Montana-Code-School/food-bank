@@ -74,7 +74,14 @@ class AdInventory extends React.Component {
        body:JSON.stringify(value)
      })
      .then ( res   => res.json())
-     .then ( data  => this.setState({items:data.items}))
+     .then ( data  => {
+        this.setState({
+          items:data.items,
+          foodCategory:''
+        })
+        this.addName.current.input.value = '';
+        this.addQuantity.current.input.value = '';
+     })
    }
 
   deleteItem(evt) {

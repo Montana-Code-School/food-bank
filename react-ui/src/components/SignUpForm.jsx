@@ -11,10 +11,17 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
-        <div className="field-line">
+    <form
+      action="/"
+      onSubmit={onSubmit}>
+      <h2
+        className="card-heading">
+        Sign Up
+      </h2>
+        {errors.summary && <p className="error-message">{errors.summary}</p>}
+        <div
+          className="field-line"
+        >
           <TextField
             floatingLabelText="Name"
             name="name"
@@ -24,7 +31,9 @@ const SignUpForm = ({
             autoComplete="name"
           />
         </div>
-        <div className="field-line">
+        <div
+          className="field-line"
+        >
           <TextField
             floatingLabelText="Email"
             name="email"
@@ -34,7 +43,9 @@ const SignUpForm = ({
             autoComplete="email"
           />
         </div>
-        <div className="field-line">
+        <div
+          className="field-line"
+        >
           <TextField
             floatingLabelText="Password"
             type="password"
@@ -45,10 +56,23 @@ const SignUpForm = ({
             autoComplete="current-password"
           />
         </div>
-        <div className="button-line">
-          <RaisedButton type="submit" label="Create New Account" primary />
+        <div
+          className="button-line"
+        >
+          <RaisedButton
+            type="submit"
+            label="Create New Account"
+            primary
+          />
         </div>
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
+      <CardText>
+        Already have an account?
+        <Link
+          to={'/login'}
+        >
+          Log in
+        </Link>
+      </CardText>
     </form>
 );
 

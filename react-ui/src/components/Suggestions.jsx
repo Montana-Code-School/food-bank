@@ -26,7 +26,8 @@ class Suggestions extends React.Component {
        headers: {
          'Content-Type' : 'application/json',
          'Accept' : 'application/json',
-         Authorization: `bearer ${Auth.getToken()}`
+         Authorization:
+          `bearer ${Auth.getToken()}`
        },
        body:JSON.stringify({suggestion: this.state.suggestion})
      })
@@ -41,25 +42,34 @@ class Suggestions extends React.Component {
   render() {
     return (
     <div>
-        <Card className="container" align="center">
-          <CardTitle title="Suggestions" subtitle="We would love to hear any feedback that you have for our organization!" />
-          <div style = {styles.suggContainer}>
-            <TextField
-              name="comments"
-              multiLine={true}
-              rows={8}
-              rowsMax={15}
-              style={styles.textFieldContainer}
-              onChange = {this.onChange}
-              value = {this.state.suggestion}
-            />
-          </div>
-          <div>
-            <SuggestionAlert
-              suggestionCall = {this.suggestionCall}
-              suggestionReset = {this.suggestionReset}
-            />
-          </div>
+      <Card
+        className="container"
+        align="center"
+      >
+        <CardTitle
+          title="Suggestions"
+          subtitle={`We would love to hear any` +
+                    ` feedback that you have for our organization!`}
+        />
+        <div
+          style = {styles.suggContainer}
+        >
+          <TextField
+            name="comments"
+            multiLine={true}
+            rows={8}
+            rowsMax={15}
+            style={styles.textFieldContainer}
+            onChange = {this.onChange}
+            value = {this.state.suggestion}
+          />
+        </div>
+        <div>
+          <SuggestionAlert
+            suggestionCall = {this.suggestionCall}
+            suggestionReset = {this.suggestionReset}
+          />
+        </div>
       </Card>
     </div>
     )

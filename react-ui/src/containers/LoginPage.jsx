@@ -19,9 +19,6 @@ export default class LoginPage extends Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
-  /**
-   * @param {object} event
-   */
   loginUser(event) {
     event.preventDefault();
     const data = {
@@ -75,8 +72,8 @@ export default class LoginPage extends Component {
       <LoginForm
         onSubmit={this.loginUser}
         onChange={this.changeUser}
-        errors={this.props.errors}
-        successMessage={this.props.successMessage}
+        errors={this.state.errors}
+        successMessage={this.state.successMessage}
         userFormObj={this.state.userFormObj}
       />
     );

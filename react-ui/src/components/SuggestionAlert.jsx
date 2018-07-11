@@ -25,7 +25,12 @@ class SuggestionAlert extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="contained" color="secondary" style = {styles.button} onClick={this.handleClickOpen}>Submit</Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          style = {styles.button}
+          onClick={this.handleClickOpen}>Submit
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -33,12 +38,18 @@ class SuggestionAlert extends React.Component {
           aria-describedby="alert-dialog-description"
         >
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              We have received your suggestion.
+            <DialogContentText
+              id="alert-dialog-description">
+                Thank you for your suggestion.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="contained" color="secondary" style = {styles.button} onClick={this.handleClose} autoFocus>
+            <Button
+              variant="contained"
+              color="secondary"
+              style = {styles.button}
+              onClick={this.handleClose}
+              autoFocus>
               Okay!
             </Button>
           </DialogActions>

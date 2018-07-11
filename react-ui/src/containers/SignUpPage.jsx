@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import SignUpForm from '../components/SignUpForm.jsx';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Carousel from '../components/ImageCarousel.jsx';
-import Button from '@material-ui/core/Button'
-import {Link} from 'react-router-dom';
 
 class SignUpPage extends React.Component {
 
@@ -45,7 +43,6 @@ class SignUpPage extends React.Component {
         });
 
         localStorage.setItem('successMessage', xhr.response.message);
-       // do you need to call toggle auth?
         this.props.history.push('/login');
       }
       else {
@@ -56,8 +53,7 @@ class SignUpPage extends React.Component {
         });
       }
     });
-    xhr.addEventListener('error', () => {
-    }, false);
+    xhr.addEventListener('error', () => {}, false);
    xhr.send(formData);
   }
 
@@ -76,13 +72,8 @@ class SignUpPage extends React.Component {
       <div style={styles.mainDiv}>
         <Card className="container" align="center" style = {styles.introCard}>
           <CardTitle title="What's at the food bank?" />
-          <CardText><strong>The one stop shop for meal planning with your local food bank's ingredients</strong></CardText>
-          <div style = {styles.buttons} >
-            <Button component = {Link} color="secondary" to="/inventory">Inventory</Button>
-            <Button component = {Link} color="secondary" to="/mealplan">Recipes</Button>
-            <Button component = {Link} color="secondary" to="/helppage">Help Page</Button>
-            <Button component = {Link} color="secondary" to="/suggestions">Suggestions</Button>
-          </div>
+          <CardText><strong>The one stop shop for meal planning with your local
+          food bank's ingredients</strong></CardText>
           <Carousel />
         </Card>
         <Card style = {styles.signUpCard}>

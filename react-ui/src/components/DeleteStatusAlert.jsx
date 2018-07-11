@@ -63,7 +63,9 @@ class DeleteStatusAlert extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="contained" style = {{margin: 3}} onClick={this.handleClose} color="secondary" autoFocus>
+            <Button variant="contained"
+              color="secondary" style = {{margin: 3}}
+               onClick={this.handleClose}  autoFocus>
               Okay!
             </Button>
           </DialogActions>

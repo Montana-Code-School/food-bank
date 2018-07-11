@@ -17,10 +17,11 @@ class AdminStatusAlert extends React.Component {
     let foundEmail = this.props.users.filter((element) => {
       if (element.email === this.props.email) {
         return element
-      } else {
+       }
+      else {
         return false;
-      }
-    })
+       }
+      })
 
     if (foundEmail.length === 1) {
       let searchUrl='/admin/user-collect/' + foundEmail[0]._id
@@ -62,7 +63,8 @@ class AdminStatusAlert extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="contained" style = {{margin: 3}} color="primary" onClick={this.handleClose} autoFocus>
+            <Button variant="contained" style = {{margin: 3}}
+              color="primary" onClick={this.handleClose} autoFocus>
               Okay!
             </Button>
           </DialogActions>

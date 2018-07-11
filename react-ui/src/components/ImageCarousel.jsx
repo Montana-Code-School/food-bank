@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import veggies1 from '../photos/veggies1.jpg';
@@ -16,7 +16,7 @@ import fruits6 from '../photos/fruits6.jpg';
 import breads from '../photos/breads.jpg';
 import cheese from '../photos/cheese.jpg';
 
-export default class ImageCarousel extends Component {
+export default class ImageCarousel extends React.PureComponent {
   render() {
     return (
       <Carousel

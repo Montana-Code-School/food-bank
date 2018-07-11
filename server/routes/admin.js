@@ -140,8 +140,4 @@ router.delete('/inventory/:item_id', (req, res) => {
    });
  });
 
-
-
-
-
 module.exports = router;

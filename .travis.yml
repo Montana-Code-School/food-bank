@@ -1,17 +1,5 @@
+os:
+- linux
 language: node_js
 node_js:
-  - "9"
-os: osx
-addons:
-  chrome: stable
-before_install:
-  - npm install -g yarn
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-cache:
-  yarn: true
-  directories:
-    - node_modules
-install:
-  - yarn install
-script:
-  - yarn test
+- '8'

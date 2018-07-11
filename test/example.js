@@ -6,7 +6,7 @@ const password = '12345678';
 let url = 'http://localhost:3000';
 let opts = {};
 if(true) {
-   url = process.env.PROD_URL
+   url = 'https://rocky-refuge-16506.herokuapp.com'
    opts = {headless:true, slowMo:100}
 }
 

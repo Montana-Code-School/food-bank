@@ -17,6 +17,7 @@ class Selector extends React.Component {
         value={cat}>{cat}
       </MenuItem>
     )
+    
     return (
       <form
         className={classes.root}

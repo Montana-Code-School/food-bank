@@ -9,7 +9,6 @@ import SignUpPage from './containers/SignUpPage.jsx';
 import DashboardPage from './containers/DashboardPage.jsx';
 import InventoryPage from './containers/InventoryPage.jsx';
 import AdInventory from './components/AdminInventory.jsx';
-import AdMealPlan from './components/AdMealPlan.jsx';
 import Auth from './modules/Auth';
 import MealPlanPage from './containers/MealPlanPage.jsx';
 import Suggestions from './components/Suggestions.jsx';
@@ -55,15 +54,15 @@ export default class Main extends Component {
   render() {
     return (
       <main>
-        <PropsRoute exact path="/" component={SignUpPage} toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
-        <PrivateRoute path="/dashboard" component={DashboardPage}/>
+        <PropsRoute exact path="/" component={SignUpPage}
+          toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
+        <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/admin-settings" component={AdminPage}/>
         <PrivateRoute path="/inventory" component={InventoryPage} user={this.props.user}/>
         <PrivateRoute path="/mealplan" component={MealPlanPage}/>
         <PrivateRoute path="/suggestions" component={Suggestions}/>
         <PrivateRoute path="/helppage" component={HelpPage}/>
         <PrivateRoute path="/adinventory" component={AdInventory}/>
-        <PrivateRoute path="/admealplan" component={AdMealPlan}/>
         <LoggedOutRoute path="/login"
           component={LoginPage}
           toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()}

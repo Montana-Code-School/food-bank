@@ -11,7 +11,6 @@ class Inventory extends React.Component {
   }
 
   componentDidMount() {
-
     fetch('/api/inventory', {
       method:'GET',
       headers: {

@@ -3,7 +3,6 @@ import Auth from '../modules/Auth';
 import MealPlan from '../components/MealPlan.jsx';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 
 class MealPlanPage extends React.Component {
 
@@ -61,7 +60,7 @@ class MealPlanPage extends React.Component {
   }
 
   componentWillMount() {
-    fetch('/api/recipes/' + 'pasta', {
+    fetch('/api/recipes/pasta', {
       method: 'GET',
       headers: {
         'Accept' : 'application/json',

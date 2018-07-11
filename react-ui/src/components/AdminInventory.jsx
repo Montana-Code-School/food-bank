@@ -23,6 +23,7 @@ class AdInventory extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
   }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -33,6 +34,7 @@ class AdInventory extends React.Component {
       category: this.state.foodCategory,
       quantity:this.addQuantity.current.input.value,
     }
+
     fetch('/admin/inventory', {
        method: 'POST',
        headers: {
@@ -55,11 +57,13 @@ class AdInventory extends React.Component {
 
   editItem(evt) {
     let searchUrl='/admin/inventory/' + evt.currentTarget.dataset.id
+
     const value = {
       name: this.addName.current.input.value,
       category: this.state.foodCategory,
       quantity: this.addQuantity.current.input.value,
     }
+
     fetch(searchUrl, {
        method: 'PUT',
        headers: {
@@ -78,21 +82,21 @@ class AdInventory extends React.Component {
       fetch( deleteUrl, { method: 'DELETE' })
         .then( res  => res.json() )
         .then( data => this.setState({items:data.items}));
-   }
+      }
 
-componentDidMount() {
-  fetch('/admin/inventory', {
-  method:'GET',
-  headers: {
-         'Accept' : 'application/json',
-         'Content-Type' : 'application/json',
-         Authorization: `bearer ${Auth.getToken()}`
-       }
-   })
-  .then((res) => {
-    return res.json()})
-  .then(data => this.setState({items:data.items}))
-}
+  componentDidMount() {
+    fetch('/admin/inventory', {
+    method:'GET',
+    headers: {
+           'Accept' : 'application/json',
+           'Content-Type' : 'application/json',
+           Authorization: `bearer ${Auth.getToken()}`
+         }
+     })
+    .then((res) => {
+      return res.json()})
+    .then(data => this.setState({items:data.items}))
+  }
 
 render() {
   let itemComponents = this.state.items.map((item,index) =>
@@ -123,7 +127,7 @@ render() {
       <Card style = {styles.cardStyle} className="container" align="center">
         <CardTitle title="Inventory" subtitle="Maintain your inventory" style={styles.titleStyle}/>
         <form style = {styles.inputDiv}>
-            <div>
+          <div>
               <TextField
                 floatingLabelText="Item Name"
                 name="Item Name"
@@ -142,8 +146,8 @@ render() {
                 ref = {this.addQuantity}
                 style = {styles.inputStyle}
               />
-              </div>
-              <div style={{textAlign:'center'}}>
+            </div>
+            <div style={{textAlign:'center'}}>
               <Selector
                 name={this.state.name}
                 foodCategory={this.state.foodCategory}
@@ -151,7 +155,7 @@ render() {
                 handleChange={this.handleChange}
                 style = {styles.selectorStyle}
               />
-              </div>
+            </div>
           </form>
         <div>
           <RaisedButton onClick={this.createItem} type="submit" label="Submit" primary aria-label="submit"/>

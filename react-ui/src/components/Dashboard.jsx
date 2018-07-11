@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Carousel from '../components/ImageCarousel.jsx';
 
-const Dashboard = ({ secretData, user }) => (
+const Dashboard = ({ user }) => (
   <Card className="container" align="center" style = {styles.container}>
     <CardTitle
       title="Dashboard"

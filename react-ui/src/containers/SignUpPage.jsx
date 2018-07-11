@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import SignUpForm from '../components/SignUpForm.jsx';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import Carousel from '../components/ImageCarousel.jsx';
-import Button from '@material-ui/core/Button'
-import {Link} from 'react-router-dom';
 
 class SignUpPage extends React.Component {
 

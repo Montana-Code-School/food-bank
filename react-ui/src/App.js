@@ -83,12 +83,10 @@ export default class App extends Component {
                toggleUser={this.toggleUser}
              />
              <Main
-               user = {this.state.user}
                toggleAuthenticateStatus={() => this.toggleAuthenticateStatus}
                toggleUser={this.toggleUser}
                errors={this.state.errors}
                userFormObj={this.state.userFormObj}
-               changeUser={this.changeUser}
                user = {this.state.user}
              />
           </div>

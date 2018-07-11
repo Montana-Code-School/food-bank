@@ -14,6 +14,7 @@ class Selector extends React.Component {
     let MenuItems = this.props.foodCategories.map((cat, index) =>
       <MenuItem key={`cat${index}`} value={cat}>{cat}</MenuItem>
     )
+    
     return (
       <form className={classes.root} autoComplete="off">
         <FormControl  className={classes.formControl}>

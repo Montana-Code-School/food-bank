@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "nodemon server",
     "heroku-postbuild": "cd react-ui/ && npm install --only=dev --no-shrinkwrap && npm run build && cd ../ && npm install",
-    "start": "node server"
+    "start": "node server",
+    "test" : "node test/example.js"
   },
   "cacheDirectories": [
     "node_modules",
@@ -21,6 +22,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "jsonwebtoken": "^8.3.0",
     "material-design-icons": "^3.0.1",
     "mongoose": "^5.1.6",
@@ -28,6 +30,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "prop-types": "^15.6.2",
+    "puppeteer": "^1.5.0",
     "react-responsive-carousel": "^3.1.41",
     "react-swipeable-views": "^0.12.14",
     "react-tap-event-plugin": "^3.0.3",

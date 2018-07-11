@@ -12,7 +12,6 @@ class MealPlanPage extends React.Component {
     this.state = {
       searchTerm: '',
       plans: [],
-      recipeId: ''
     };
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.findRecipe = this.findRecipe.bind(this);
@@ -53,13 +52,12 @@ class MealPlanPage extends React.Component {
           publisher: data[i].publisher,
           source_url: data[i].source_url
         }
-
         tempArr.push(obj);
        }
        this.setState({
          plans:tempArr
        })
-     })
+      })
   }
 
   componentWillMount() {
@@ -84,14 +82,12 @@ class MealPlanPage extends React.Component {
           publisher: data[i].publisher,
           source_url: data[i].source_url
         }
-
         tempArr.push(obj);
        }
        this.setState({
          plans:tempArr
        })
      })
-
   }
 
   render() {
@@ -117,15 +113,16 @@ class MealPlanPage extends React.Component {
       <div>
         <div style = {styles.searchContainer}>
           <Input
-          onChange={this.storeSearchTerm}
-          style= {styles.searchBox}
+            onChange={this.storeSearchTerm}
+            style= {styles.searchBox}
           />
-          <Button variant="outlined" color="primary" style= {styles.searchBox} onClick={this.findRecipe}>
+          <Button variant="outlined" color="primary" style= {styles.searchBox}
+            onClick={this.findRecipe}>
             Search
           </Button>
         </div>
       <div style={styles.recipesContainer}>
-          {mealPlans}
+        {mealPlans}
       </div>
     </div>
     );

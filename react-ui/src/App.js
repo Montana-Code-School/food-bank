@@ -17,12 +17,6 @@ export default class App extends Component {
       message: null,
       fetching: true,
       authenticated: false,
-      adminStatus: false,
-      errors: {},
-      userFormObj: {
-        email: '',
-        password: ''
-      },
       user: null
     };
     this.toggleUser = this.toggleUser.bind(this);
@@ -80,15 +74,11 @@ export default class App extends Component {
                user = {this.state.user}
                authenticated= {this.state.authenticated}
                toggleAuthenticateStatus={() => this.toggleAuthenticateStatus}
-               toggleUser={this.toggleUser}
              />
              <Main
-               user = {this.state.user}
                toggleAuthenticateStatus={() => this.toggleAuthenticateStatus}
                toggleUser={this.toggleUser}
                errors={this.state.errors}
-               userFormObj={this.state.userFormObj}
-               changeUser={this.changeUser}
                user = {this.state.user}
              />
           </div>

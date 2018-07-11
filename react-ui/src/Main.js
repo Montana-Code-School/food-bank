@@ -69,9 +69,6 @@ export default class Main extends Component {
           toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()}
           toggleUser={this.props.toggleUser}
           errors={this.props.errors}
-          userFormObj={this.props.userFormObj}
-          changeUser={this.props.changeUser}
-          loginUser={this.props.loginUser}
         />
         <LoggedOutRoute path="/signup" component={SignUpPage}/>
         <Route path="/logout"

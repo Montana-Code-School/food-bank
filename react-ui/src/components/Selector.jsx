@@ -12,11 +12,19 @@ class Selector extends React.Component {
     const { classes } = this.props;
 
     let MenuItems = this.props.foodCategories.map((cat, index) =>
-      <MenuItem key={`cat${index}`} value={cat}>{cat}</MenuItem>
+      <MenuItem
+        key={`cat${index}`}
+        value={cat}>{cat}
+      </MenuItem>
     )
     return (
-      <form className={classes.root} autoComplete="off">
-        <FormControl  className={classes.formControl}>
+      <form
+        className={classes.root}
+        autoComplete="off"
+      >
+        <FormControl
+          className={classes.formControl}
+        >
           <InputLabel htmlFor="foodCategory-simple">Category</InputLabel>
           <Select
             value={this.props.foodCategory}
@@ -26,10 +34,7 @@ class Selector extends React.Component {
               id: 'foodCategory-simple'
             }}
           >
-          <MenuItem value="">
-              <em>None</em>
-          </MenuItem>
-            {MenuItems}
+          <MenuItem value=""><em>None</em></MenuItem>{MenuItems}
           </Select>
         </FormControl>
       </form>
